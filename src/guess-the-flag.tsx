@@ -2,6 +2,7 @@ import React, { useReducer } from "react";
 import { getFlags, Flag } from "./utils/flags";
 import { getPlayers } from "./utils/players";
 import { classNames } from "./utils/class-names";
+import { UButton } from "./components/u-button";
 import "./guess-the-flag.css";
 
 export default function GuessTheFlag() {
@@ -10,32 +11,31 @@ export default function GuessTheFlag() {
   function GameBoardScreen(state: QuestionState | AnswerState) {
     let currentPlayerIndex = state.answeredQuestions % state.players.length;
     let totalFlags = state.answeredQuestions + state.remainingFlags.length;
-    let percentComplete = (100 / totalFlags) * state.remainingFlags.length;
+    let percentComplete = (100 / totalFlags) * state.answeredQuestions;
 
     return (
       <div>
-        <div className="game-board-players">
-          {state.players.map((player, index) => (
-            <div
-              key={player.name}
-              className={classNames({
-                "game-board-player": true,
-                "game-board-player__active": index === currentPlayerIndex
-              })}
-            >
-              <span>{player.name}</span>
-              <span>{player.score}</span>
-            </div>
-          ))}
-        </div>
         <div className="progress-bar">
-          <span className="progress-bar__status">
-            {state.answeredQuestions} / {totalFlags}
-          </span>
           <div
             className="progress-bar__bar"
             style={{ width: `${percentComplete}%` }}
           />
+        </div>
+        <div className="tc block">
+          {state.players.map((player, index) => (
+            <div
+              key={player.name}
+              className={classNames({
+                inline: true,
+                pa1: true,
+                br1: true,
+                "game-board-player__active": index === currentPlayerIndex
+              })}
+            >
+              <span>{player.name}&nbsp;</span>
+              <span>{player.score}</span>
+            </div>
+          ))}
         </div>
       </div>
     );
@@ -43,8 +43,8 @@ export default function GuessTheFlag() {
 
   function ResultView(state: ResultState) {
     return (
-      <div>
-        <h1 className="h1">It's over!!</h1>
+      <div className="flex flex-column items-center">
+        <h1 className="tc">It's over!!</h1>
         <h3>The winner is {state.winnerName}</h3>
         <button className="button" onClick={() => dispatch(goToSetup())}>
           New game
@@ -56,20 +56,23 @@ export default function GuessTheFlag() {
   function SetupView() {
     return (
       <div>
-        <h1 className="welcome-heading">
-          Guess the Flag <br />
-          <small className="welcome-heading__subheader">with Friends</small>
+        <h1 className="tc fs3">
+          Guess the Flag
+          <br />
+          <span className="fs4">with Friends</span>
         </h1>
-        <h1 className="h1">How many players?</h1>
-        {[2, 3, 4, 5].map(n => (
-          <button
-            key={n}
-            className="button"
-            onClick={() => dispatch(startGame(n))}
-          >
-            {n}
-          </button>
-        ))}
+        <h1 className="tc">How many players?</h1>
+        <div className="tc">
+          {[2, 3, 4, 5].map(n => (
+            <span className="pa1">
+              <UButton
+                key={n}
+                onClick={() => dispatch(startGame(n))}
+                label={n.toString()}
+              />
+            </span>
+          ))}
+        </div>
       </div>
     );
   }
@@ -81,11 +84,14 @@ export default function GuessTheFlag() {
     return (
       <div>
         {GameBoardScreen(state)}
-        <h1 className="h1">Guess the flag</h1>
+        <h1 className="tc">Guess the flag</h1>
         <img className="game-board-img" src={flag.imgUrl} alt="Flag" />
-        <button className="button" onClick={() => dispatch(revealAnswer())}>
-          Show me
-        </button>
+        <div className="tc fs4 invisible">{flag.countryName}</div>
+        <div className="tc">
+          <button className="button" onClick={() => dispatch(revealAnswer())}>
+            Show me
+          </button>
+        </div>
       </div>
     );
   }
@@ -97,25 +103,27 @@ export default function GuessTheFlag() {
     return (
       <div>
         {GameBoardScreen(state)}
-        <h1 className="h1">Guess the flag</h1>
+        <h1 className="tc">Guess the flag</h1>
         <img className="game-board-img" src={flag.imgUrl} alt="Flag" />
-        <h1>{flag.countryName}</h1>
-        <button
-          className="button"
-          onClick={() => dispatch(markAsCorrectAnswer())}
-        >
-          <span role="img" aria-label="Correct">
-            👍
-          </span>
-        </button>
-        <button
-          className="button"
-          onClick={() => dispatch(markAsWrongAnswer())}
-        >
-          <span role="img" aria-label="Wrong">
-            👎
-          </span>
-        </button>
+        <div className="tc fs4">{flag.countryName}</div>
+        <div className="tc">
+          <button
+            className="button mr1"
+            onClick={() => dispatch(markAsCorrectAnswer())}
+          >
+            <span role="img" aria-label="Correct">
+              👍
+            </span>
+          </button>
+          <button
+            className="button"
+            onClick={() => dispatch(markAsWrongAnswer())}
+          >
+            <span role="img" aria-label="Wrong">
+              👎
+            </span>
+          </button>
+        </div>
       </div>
     );
   }
@@ -223,7 +231,7 @@ export function reducer(state: State, action: Actions): State {
         kind: "question",
         players,
         answeredQuestions: 0,
-        remainingFlags: getFlags(10)
+        remainingFlags: getFlags(numberOfPlayers * 10)
       };
 
     case "REVEAL_ANSWER":

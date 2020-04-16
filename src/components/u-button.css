@@ -1,0 +1,8 @@
+.u-button {
+  font-size: var(--fs6);
+  color: var(--color-white);
+  padding: var(--s1) var(--s4);
+  background: var(--color-turqouise-light);
+  border-radius: 0.25rem;
+  border: none;
+}

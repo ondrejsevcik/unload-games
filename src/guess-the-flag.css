@@ -1,62 +1,32 @@
-body {
-  background: #fff8ee;
-  padding: 10px;
-  max-width: 500px;
-  margin: auto;
-}
-
-.h1 {
-  text-align: center;
-}
-
-.welcome-heading {
-  text-align: center;
-  margin: 50px 0;
-}
-
 .button {
-  font-size: 2em;
-  color: white;
+  font-size: var(--fs2);
+  color: var(--color-white);
   padding: 10px 10px;
   min-width: 20%;
   display: inline-block;
-  background: green;
+  background: var(--color-turqouise-light);
   text-decoration: none;
   text-align: center;
   cursor: pointer;
 }
 
-.button + .button {
-  margin-top: 10px;
-}
-
-.game-board-players {
-  display: block;
-}
-
-.game-board-player {
-  display: inline;
-  padding: 5px;
-}
-
 .game-board-player__active {
-  background: #f9d695;
+  background: var(--color-blue-light);
+  color: var(--color-white);
 }
 
 .game-board-img {
-  height: 10em;
+  height: 10rem;
   text-align: center;
   display: block;
   margin: auto;
-  padding: 10px 0;
+  border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .progress-bar {
   width: 100%;
-  border: 1px solid black;
   position: relative;
-  padding: 1px;
-  margin: 20px 0;
+  margin-bottom: var(--s5);
 }
 
 .progress-bar__status {
@@ -65,6 +35,7 @@ body {
 }
 
 .progress-bar__bar {
-  height: 20px;
-  background-color: green;
+  height: 0.5rem;
+  background-color: var(--color-blue-light);
+  transition: width 200ms ease-in-out;
 }
