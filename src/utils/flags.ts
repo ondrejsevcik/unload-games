@@ -1,6 +1,6 @@
 import { shuffle } from "./shuffle";
 
-export function getFlags(count = 0) {
+export function getFlags(count = 0): Flag[] {
   if (count < 1) {
     return shuffle(flags);
   }
@@ -8,806 +8,1296 @@ export function getFlags(count = 0) {
   return shuffle(flags).slice(0, count);
 }
 
-export interface Flag {
-  imgUrl: string;
-  countryName: string;
+export function getFlagImgPath(flag: Flag) {
+  return `/img-flags/${flag.countryCode}.png`;
 }
 
-let flags: Flag[] = [
+export type Continent =
+  | "africa"
+  | "asia"
+  | "europe"
+  | "north-america"
+  | "oceania"
+  | "south-america";
+
+export const continents = [
+  { countryName: "Africa", value: "africa" },
+  { countryName: "Asia", value: "asia" },
+  { countryName: "Europe", value: "europe" },
+  { countryName: "North America", value: "north-america" },
+  { countryName: "Oceania", value: "oceania" },
+  { countryName: "South America", value: "south-america" }
+];
+
+export interface Flag {
+  countryCode: string;
+  countryName: string;
+  continent: Continent;
+}
+
+let africaFlags: Flag[] = [
   {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/af.png",
-    countryName: "Afghanistan"
+    countryName: "Algeria",
+    countryCode: "dz",
+    continent: "africa"
   },
   {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/al.png",
-    countryName: "Albania"
+    countryName: "Angola",
+    countryCode: "ao",
+    continent: "africa"
   },
   {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/dz.png",
-    countryName: "Algeria"
+    countryName: "Benin",
+    countryCode: "bj",
+    continent: "africa"
   },
   {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/ad.png",
-    countryName: "Andorra"
+    countryName: "Botswana",
+    countryCode: "bw",
+    continent: "africa"
   },
   {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/ao.png",
-    countryName: "Angola"
+    countryName: "British Indian Ocean Territory",
+    countryCode: "io",
+    continent: "africa"
   },
   {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/ag.png",
-    countryName: "Antigua and Barbuda"
+    countryName: "Burkina Faso",
+    countryCode: "bf",
+    continent: "africa"
   },
   {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/ar.png",
-    countryName: "Argentina"
+    countryName: "Burundi",
+    countryCode: "bi",
+    continent: "africa"
   },
   {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/am.png",
-    countryName: "Armenia"
+    countryName: "Cameroon",
+    countryCode: "cm",
+    continent: "africa"
   },
   {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/au.png",
-    countryName: "Australia"
+    countryName: "Cape Verde",
+    countryCode: "cv",
+    continent: "africa"
   },
   {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/at.png",
-    countryName: "Austria"
+    countryName: "Central African Republic",
+    countryCode: "cf",
+    continent: "africa"
   },
   {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/az.png",
-    countryName: "Azerbaijan"
+    countryName: "Chad",
+    countryCode: "td",
+    continent: "africa"
   },
   {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/bs.png",
-    countryName: "The Bahamas"
+    countryName: "Comoros",
+    countryCode: "km",
+    continent: "africa"
   },
   {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/bh.png",
-    countryName: "Bahrain"
+    countryName: "Republic of the Congo",
+    countryCode: "cg",
+    continent: "africa"
   },
   {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/bd.png",
-    countryName: "Bangladesh"
+    countryName: "DR Congo",
+    countryCode: "cd",
+    continent: "africa"
   },
   {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/bb.png",
-    countryName: "Barbados"
+    countryName: "Côte d'Ivoire",
+    countryCode: "ci",
+    continent: "africa"
   },
   {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/by.png",
-    countryName: "Belarus"
+    countryName: "Djibouti",
+    countryCode: "dj",
+    continent: "africa"
   },
   {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/be.png",
-    countryName: "Belgium"
+    countryName: "Egypt",
+    countryCode: "eg",
+    continent: "africa"
   },
   {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/bz.png",
-    countryName: "Belize"
+    countryName: "Equatorial Guinea",
+    countryCode: "gq",
+    continent: "africa"
   },
   {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/bj.png",
-    countryName: "Benin"
+    countryName: "Eritrea",
+    countryCode: "er",
+    continent: "africa"
   },
   {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/bt.png",
-    countryName: "Bhutan"
+    countryName: "Eswatini",
+    countryCode: "sz",
+    continent: "africa"
   },
   {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/bo.png",
-    countryName: "Bolivia"
+    countryName: "Ethiopia",
+    countryCode: "et",
+    continent: "africa"
   },
   {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/ba.png",
-    countryName: "Bosnia and Herzegovina"
+    countryName: "Gabon",
+    countryCode: "ga",
+    continent: "africa"
   },
   {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/bw.png",
-    countryName: "Botswana"
+    countryName: "Gambia",
+    countryCode: "gm",
+    continent: "africa"
   },
   {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/br.png",
-    countryName: "Brazil"
+    countryName: "Ghana",
+    countryCode: "gh",
+    continent: "africa"
   },
   {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/bn.png",
-    countryName: "Brunei"
+    countryName: "Guinea",
+    countryCode: "gn",
+    continent: "africa"
   },
   {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/bg.png",
-    countryName: "Bulgaria"
+    countryName: "Guinea-Bissau",
+    countryCode: "gw",
+    continent: "africa"
   },
   {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/bf.png",
-    countryName: "Burkina Faso"
+    countryName: "Kenya",
+    countryCode: "ke",
+    continent: "africa"
   },
   {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/bi.png",
-    countryName: "Burundi"
+    countryName: "Lesotho",
+    countryCode: "ls",
+    continent: "africa"
   },
   {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/kh.png",
-    countryName: "Cambodia"
+    countryName: "Liberia",
+    countryCode: "lr",
+    continent: "africa"
   },
   {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/cm.png",
-    countryName: "Cameroon"
+    countryName: "Libya",
+    countryCode: "ly",
+    continent: "africa"
   },
   {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/ca.png",
-    countryName: "Canada"
+    countryName: "Madagascar",
+    countryCode: "mg",
+    continent: "africa"
   },
   {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/cv.png",
-    countryName: "Cape Verde"
+    countryName: "Malawi",
+    countryCode: "mw",
+    continent: "africa"
   },
   {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/cf.png",
-    countryName: "The Central African Republic"
+    countryName: "Mali",
+    countryCode: "ml",
+    continent: "africa"
   },
   {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/td.png",
-    countryName: "Chad"
+    countryName: "Mauritania",
+    countryCode: "mr",
+    continent: "africa"
   },
   {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/cl.png",
-    countryName: "Chile"
+    countryName: "Mauritius",
+    countryCode: "mu",
+    continent: "africa"
   },
   {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/co.png",
-    countryName: "Colombia"
+    countryName: "Mayotte",
+    countryCode: "yt",
+    continent: "africa"
   },
   {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/km.png",
-    countryName: "The Comoros"
+    countryName: "Morocco",
+    countryCode: "ma",
+    continent: "africa"
   },
   {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/ck.png",
-    countryName: "Cook Islands"
+    countryName: "Mozambique",
+    countryCode: "mz",
+    continent: "africa"
   },
   {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/cr.png",
-    countryName: "Costa Rica"
+    countryName: "Namibia",
+    countryCode: "na",
+    continent: "africa"
   },
   {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/ci.png",
-    countryName: "Cote d'Ivoire"
+    countryName: "Niger",
+    countryCode: "ne",
+    continent: "africa"
   },
   {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/hr.png",
-    countryName: "Croatia"
+    countryName: "Nigeria",
+    countryCode: "ng",
+    continent: "africa"
   },
   {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/cu.png",
-    countryName: "Cuba"
+    countryName: "Réunion",
+    countryCode: "re",
+    continent: "africa"
   },
   {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/cy.png",
-    countryName: "Cyprus"
+    countryName: "Rwanda",
+    countryCode: "rw",
+    continent: "africa"
   },
   {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/cz.png",
-    countryName: "The Czech Republic"
+    countryName: "Saint Helena, Ascension and Tristan da Cunha",
+    countryCode: "sh",
+    continent: "africa"
   },
   {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/cd.png",
-    countryName: "The Democratic Republic of the Congo"
+    countryName: "São Tomé and Príncipe",
+    countryCode: "st",
+    continent: "africa"
   },
   {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/dk.png",
-    countryName: "Denmark"
+    countryName: "Senegal",
+    countryCode: "sn",
+    continent: "africa"
   },
   {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/dj.png",
-    countryName: "Djibouti"
+    countryName: "Seychelles",
+    countryCode: "sc",
+    continent: "africa"
   },
   {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/dm.png",
-    countryName: "Dominica"
+    countryName: "Sierra Leone",
+    countryCode: "sl",
+    continent: "africa"
   },
   {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/do.png",
-    countryName: "The Dominican Republic"
+    countryName: "Somalia",
+    countryCode: "so",
+    continent: "africa"
   },
   {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/tl.png",
-    countryName: "East Timor"
+    countryName: "South Africa",
+    countryCode: "za",
+    continent: "africa"
   },
   {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/ec.png",
-    countryName: "Ecuador"
+    countryName: "South Sudan",
+    countryCode: "ss",
+    continent: "africa"
   },
   {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/eg.png",
-    countryName: "Egypt"
+    countryName: "Sudan",
+    countryCode: "sd",
+    continent: "africa"
   },
   {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/sv.png",
-    countryName: "El Salvador"
+    countryName: "Tanzania",
+    countryCode: "tz",
+    continent: "africa"
   },
   {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/gq.png",
-    countryName: "Equatorial Guinea"
+    countryName: "Togo",
+    countryCode: "tg",
+    continent: "africa"
   },
   {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/er.png",
-    countryName: "Eritrea"
+    countryName: "Tunisia",
+    countryCode: "tn",
+    continent: "africa"
   },
   {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/ee.png",
-    countryName: "Estonia"
+    countryName: "Uganda",
+    countryCode: "ug",
+    continent: "africa"
   },
   {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/et.png",
-    countryName: "Ethiopia"
+    countryName: "Western Sahara",
+    countryCode: "eh",
+    continent: "africa"
   },
   {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/fj.png",
-    countryName: "Fiji"
+    countryName: "Zambia",
+    countryCode: "zm",
+    continent: "africa"
   },
   {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/fi.png",
-    countryName: "Finland"
-  },
-  {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/fr.png",
-    countryName: "France"
-  },
-  {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/ga.png",
-    countryName: "Gabon"
-  },
-  {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/gm.png",
-    countryName: "The Gambia"
-  },
-  {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/ge.png",
-    countryName: "Georgia"
-  },
-  {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/de.png",
-    countryName: "Germany"
-  },
-  {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/gh.png",
-    countryName: "Ghana"
-  },
-  {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/gr.png",
-    countryName: "Greece"
-  },
-  {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/gd.png",
-    countryName: "Grenada"
-  },
-  {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/gt.png",
-    countryName: "Guatemala"
-  },
-  {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/gn.png",
-    countryName: "Guinea"
-  },
-  {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/gw.png",
-    countryName: "Guinea-Bissau"
-  },
-  {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/gy.png",
-    countryName: "Guyana"
-  },
-  {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/ht.png",
-    countryName: "Haiti"
-  },
-  {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/hn.png",
-    countryName: "Honduras"
-  },
-  {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/hu.png",
-    countryName: "Hungary"
-  },
-  {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/is.png",
-    countryName: "Iceland"
-  },
-  {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/in.png",
-    countryName: "India"
-  },
-  {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/id.png",
-    countryName: "Indonesia"
-  },
-  {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/ir.png",
-    countryName: "Iran"
-  },
-  {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/iq.png",
-    countryName: "Iraq"
-  },
-  {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/ie.png",
-    countryName: "Ireland"
-  },
-  {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/il.png",
-    countryName: "Israel"
-  },
-  {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/it.png",
-    countryName: "Italy"
-  },
-  {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/jm.png",
-    countryName: "Jamaica"
-  },
-  {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/jp.png",
-    countryName: "Japan"
-  },
-  {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/jo.png",
-    countryName: "Jordan"
-  },
-  {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/kz.png",
-    countryName: "Kazakhstan"
-  },
-  {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/ke.png",
-    countryName: "Kenya"
-  },
-  {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/ki.png",
-    countryName: "Kiribati"
-  },
-  {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/ks.png",
-    countryName: "Kosovo"
-  },
-  {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/kw.png",
-    countryName: "Kuwait"
-  },
-  {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/kg.png",
-    countryName: "Kyrgyzstan"
-  },
-  {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/la.png",
-    countryName: "Laos"
-  },
-  {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/lv.png",
-    countryName: "Latvia"
-  },
-  {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/lb.png",
-    countryName: "Lebanon"
-  },
-  {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/ls.png",
-    countryName: "Lesotho"
-  },
-  {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/lr.png",
-    countryName: "Liberia"
-  },
-  {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/ly.png",
-    countryName: "Libya"
-  },
-  {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/li.png",
-    countryName: "Liechtenstein"
-  },
-  {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/lt.png",
-    countryName: "Lithuania"
-  },
-  {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/lu.png",
-    countryName: "Luxembourg"
-  },
-  {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/mk.png",
-    countryName: "Macedonia"
-  },
-  {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/mg.png",
-    countryName: "Madagascar"
-  },
-  {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/mw.png",
-    countryName: "Malawi"
-  },
-  {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/my.png",
-    countryName: "Malaysia"
-  },
-  {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/mv.png",
-    countryName: "Maldives"
-  },
-  {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/ml.png",
-    countryName: "Mali"
-  },
-  {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/mt.png",
-    countryName: "Malta"
-  },
-  {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/mh.png",
-    countryName: "The Marshall Islands"
-  },
-  {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/mr.png",
-    countryName: "Mauritania"
-  },
-  {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/mu.png",
-    countryName: "Mauritius"
-  },
-  {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/mx.png",
-    countryName: "Mexico"
-  },
-  {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/fm.png",
-    countryName: "Micronesia"
-  },
-  {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/md.png",
-    countryName: "Moldova"
-  },
-  {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/mc.png",
-    countryName: "Monaco"
-  },
-  {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/mn.png",
-    countryName: "Mongolia"
-  },
-  {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/me.png",
-    countryName: "Montenegro"
-  },
-  {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/ma.png",
-    countryName: "Morocco"
-  },
-  {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/mz.png",
-    countryName: "Mozambique"
-  },
-  {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/mm.png",
-    countryName: "Myanmar"
-  },
-  {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/na.png",
-    countryName: "Namibia"
-  },
-  {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/nr.png",
-    countryName: "Nauru"
-  },
-  {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/np.png",
-    countryName: "Nepal"
-  },
-  {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/nl.png",
-    countryName: "The Netherlands"
-  },
-  {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/nz.png",
-    countryName: "New Zealand"
-  },
-  {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/ni.png",
-    countryName: "Nicaragua"
-  },
-  {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/ne.png",
-    countryName: "Niger"
-  },
-  {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/ng.png",
-    countryName: "Nigeria"
-  },
-  {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/nu.png",
-    countryName: "Niue"
-  },
-  {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/kp.png",
-    countryName: "North Korea"
-  },
-  {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/no.png",
-    countryName: "Norway"
-  },
-  {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/om.png",
-    countryName: "Oman"
-  },
-  {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/pk.png",
-    countryName: "Pakistan"
-  },
-  {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/pw.png",
-    countryName: "Palau"
-  },
-  {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/pa.png",
-    countryName: "Panama"
-  },
-  {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/pg.png",
-    countryName: "Papua New Guinea"
-  },
-  {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/py.png",
-    countryName: "Paraguay"
-  },
-  {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/cn.png",
-    countryName: "The People's Republic of China"
-  },
-  {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/pe.png",
-    countryName: "Peru"
-  },
-  {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/ph.png",
-    countryName: "The Philippines"
-  },
-  {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/pl.png",
-    countryName: "Poland"
-  },
-  {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/pt.png",
-    countryName: "Portugal"
-  },
-  {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/qa.png",
-    countryName: "Qatar"
-  },
-  {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/tw.png",
-    countryName: "The Republic of China"
-  },
-  {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/cg.png",
-    countryName: "The Republic of the Congo"
-  },
-  {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/ro.png",
-    countryName: "Romania"
-  },
-  {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/ru.png",
-    countryName: "Russia"
-  },
-  {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/rw.png",
-    countryName: "Rwanda"
-  },
-  {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/kn.png",
-    countryName: "Saint Kitts and Nevis"
-  },
-  {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/lc.png",
-    countryName: "Saint Lucia"
-  },
-  {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/vc.png",
-    countryName: "Saint Vincent and the Grenadines"
-  },
-  {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/ws.png",
-    countryName: "Samoa"
-  },
-  {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/sm.png",
-    countryName: "San Marino"
-  },
-  {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/st.png",
-    countryName: "Sao Tome and Principe"
-  },
-  {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/sa.png",
-    countryName: "Saudi Arabia"
-  },
-  {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/sn.png",
-    countryName: "Senegal"
-  },
-  {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/rs.png",
-    countryName: "Serbia"
-  },
-  {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/sc.png",
-    countryName: "The Seychelles"
-  },
-  {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/sl.png",
-    countryName: "Sierra Leone"
-  },
-  {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/sg.png",
-    countryName: "Singapore"
-  },
-  {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/sk.png",
-    countryName: "Slovakia"
-  },
-  {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/si.png",
-    countryName: "Slovenia"
-  },
-  {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/sb.png",
-    countryName: "The Solomon Islands"
-  },
-  {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/so.png",
-    countryName: "Somalia"
-  },
-  {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/za.png",
-    countryName: "South Africa"
-  },
-  {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/kr.png",
-    countryName: "South Korea"
-  },
-  {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/ss.png",
-    countryName: "South Sudan"
-  },
-  {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/es.png",
-    countryName: "Spain"
-  },
-  {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/lk.png",
-    countryName: "Sri Lanka"
-  },
-  {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/sd.png",
-    countryName: "Sudan"
-  },
-  {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/sr.png",
-    countryName: "Suriname"
-  },
-  {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/sz.png",
-    countryName: "Swaziland"
-  },
-  {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/se.png",
-    countryName: "Sweden"
-  },
-  {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/ch.png",
-    countryName: "Switzerland"
-  },
-  {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/sy.png",
-    countryName: "Syria"
-  },
-  {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/tj.png",
-    countryName: "Tajikistan"
-  },
-  {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/tz.png",
-    countryName: "Tanzania"
-  },
-  {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/th.png",
-    countryName: "Thailand"
-  },
-  {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/tg.png",
-    countryName: "Togo"
-  },
-  {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/to.png",
-    countryName: "Tonga"
-  },
-  {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/tt.png",
-    countryName: "Trinidad and Tobago"
-  },
-  {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/tn.png",
-    countryName: "Tunisia"
-  },
-  {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/tr.png",
-    countryName: "Turkey"
-  },
-  {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/tm.png",
-    countryName: "Turkmenistan"
-  },
-  {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/tv.png",
-    countryName: "Tuvalu"
-  },
-  {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/ug.png",
-    countryName: "Uganda"
-  },
-  {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/ua.png",
-    countryName: "Ukraine"
-  },
-  {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/ae.png",
-    countryName: "The United Arab Emirates"
-  },
-  {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/gb.png",
-    countryName: "The United Kingdom"
-  },
-  {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/us.png",
-    countryName: "The United States"
-  },
-  {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/uy.png",
-    countryName: "Uruguay"
-  },
-  {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/uz.png",
-    countryName: "Uzbekistan"
-  },
-  {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/vu.png",
-    countryName: "Vanuatu"
-  },
-  {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/va.png",
-    countryName: "The Vatican City"
-  },
-  {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/ve.png",
-    countryName: "Venezuela"
-  },
-  {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/vn.png",
-    countryName: "Vietnam"
-  },
-  {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/eh.png",
-    countryName: "Western Sahara"
-  },
-  {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/ye.png",
-    countryName: "Yemen"
-  },
-  {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/zm.png",
-    countryName: "Zambia"
-  },
-  {
-    imgUrl: "//flags.fmcdn.net/data/flags/normal/zw.png",
-    countryName: "Zimbabwe"
+    countryName: "Zimbabwe",
+    countryCode: "zw",
+    continent: "africa"
   }
 ];
+
+let asiaFlags: Flag[] = [
+  {
+    countryName: "Armenia",
+    countryCode: "am",
+    continent: "asia"
+  },
+  {
+    countryName: "Azerbaijan",
+    countryCode: "az",
+    continent: "asia"
+  },
+  {
+    countryName: "Bahrain",
+    countryCode: "bh",
+    continent: "asia"
+  },
+  {
+    countryName: "Bangladesh",
+    countryCode: "bd",
+    continent: "asia"
+  },
+  {
+    countryName: "Bhutan",
+    countryCode: "bt",
+    continent: "asia"
+  },
+  {
+    countryName: "Brunei",
+    countryCode: "bn",
+    continent: "asia"
+  },
+  {
+    countryName: "Cambodia",
+    countryCode: "kh",
+    continent: "asia"
+  },
+  {
+    countryName: "China",
+    countryCode: "cn",
+    continent: "asia"
+  },
+  {
+    countryName: "Egypt",
+    countryCode: "eg",
+    continent: "asia"
+  },
+  {
+    countryName: "Georgia",
+    countryCode: "ge",
+    continent: "asia"
+  },
+  {
+    countryName: "Hong Kong",
+    countryCode: "hk",
+    continent: "asia"
+  },
+  {
+    countryName: "India",
+    countryCode: "in",
+    continent: "asia"
+  },
+  {
+    countryName: "Indonesia",
+    countryCode: "id",
+    continent: "asia"
+  },
+  {
+    countryName: "Iran",
+    countryCode: "ir",
+    continent: "asia"
+  },
+  {
+    countryName: "Iraq",
+    countryCode: "iq",
+    continent: "asia"
+  },
+  {
+    countryName: "Israel",
+    countryCode: "il",
+    continent: "asia"
+  },
+  {
+    countryName: "Japan",
+    countryCode: "jp",
+    continent: "asia"
+  },
+  {
+    countryName: "Jordan",
+    countryCode: "jo",
+    continent: "asia"
+  },
+  {
+    countryName: "Kazakhstan",
+    countryCode: "kz",
+    continent: "asia"
+  },
+  {
+    countryName: "North Korea",
+    countryCode: "kp",
+    continent: "asia"
+  },
+  {
+    countryName: "South Korea",
+    countryCode: "kr",
+    continent: "asia"
+  },
+  {
+    countryName: "Kuwait",
+    countryCode: "kw",
+    continent: "asia"
+  },
+  {
+    countryName: "Kyrgyzstan",
+    countryCode: "kg",
+    continent: "asia"
+  },
+  {
+    countryName: "Laos",
+    countryCode: "la",
+    continent: "asia"
+  },
+  {
+    countryName: "Lebanon",
+    countryCode: "lb",
+    continent: "asia"
+  },
+  {
+    countryName: "Macau",
+    countryCode: "mo",
+    continent: "asia"
+  },
+  {
+    countryName: "Malaysia",
+    countryCode: "my",
+    continent: "asia"
+  },
+  {
+    countryName: "Maldives",
+    countryCode: "mv",
+    continent: "asia"
+  },
+  {
+    countryName: "Mongolia",
+    countryCode: "mn",
+    continent: "asia"
+  },
+  {
+    countryName: "Myanmar",
+    countryCode: "mm",
+    continent: "asia"
+  },
+  {
+    countryName: "Nepal",
+    countryCode: "np",
+    continent: "asia"
+  },
+  {
+    countryName: "Oman",
+    countryCode: "om",
+    continent: "asia"
+  },
+  {
+    countryName: "Pakistan",
+    countryCode: "pk",
+    continent: "asia"
+  },
+  {
+    countryName: "Palestine",
+    countryCode: "ps",
+    continent: "asia"
+  },
+  {
+    countryName: "Philippines",
+    countryCode: "ph",
+    continent: "asia"
+  },
+  {
+    countryName: "Qatar",
+    countryCode: "qa",
+    continent: "asia"
+  },
+  {
+    countryName: "Russia",
+    countryCode: "ru",
+    continent: "asia"
+  },
+  {
+    countryName: "Saudi Arabia",
+    countryCode: "sa",
+    continent: "asia"
+  },
+  {
+    countryName: "Singapore",
+    countryCode: "sg",
+    continent: "asia"
+  },
+  {
+    countryName: "Sri Lanka",
+    countryCode: "lk",
+    continent: "asia"
+  },
+  {
+    countryName: "Syria",
+    countryCode: "sy",
+    continent: "asia"
+  },
+  {
+    countryName: "Taiwan",
+    countryCode: "tw",
+    continent: "asia"
+  },
+  {
+    countryName: "Tajikistan",
+    countryCode: "tj",
+    continent: "asia"
+  },
+  {
+    countryName: "Thailand",
+    countryCode: "th",
+    continent: "asia"
+  },
+  {
+    countryName: "Timor-Leste",
+    countryCode: "tl",
+    continent: "asia"
+  },
+  {
+    countryName: "Turkey",
+    countryCode: "tr",
+    continent: "asia"
+  },
+  {
+    countryName: "Turkmenistan",
+    countryCode: "tm",
+    continent: "asia"
+  },
+  {
+    countryName: "United Arab Emirates",
+    countryCode: "ae",
+    continent: "asia"
+  },
+  {
+    countryName: "Uzbekistan",
+    countryCode: "uz",
+    continent: "asia"
+  },
+  {
+    countryName: "Vietnam",
+    countryCode: "vn",
+    continent: "asia"
+  },
+  {
+    countryName: "Yemen",
+    countryCode: "ye",
+    continent: "asia"
+  }
+];
+
+let europeFlags: Flag[] = [
+  {
+    countryName: "Åland Islands",
+    countryCode: "ax",
+    continent: "europe"
+  },
+  {
+    countryName: "Albania",
+    countryCode: "al",
+    continent: "europe"
+  },
+  {
+    countryName: "Andorra",
+    countryCode: "ad",
+    continent: "europe"
+  },
+  {
+    countryName: "Austria",
+    countryCode: "at",
+    continent: "europe"
+  },
+  {
+    countryName: "Belarus",
+    countryCode: "by",
+    continent: "europe"
+  },
+  {
+    countryName: "Belgium",
+    countryCode: "be",
+    continent: "europe"
+  },
+  {
+    countryName: "Bosnia and Herzegovina",
+    countryCode: "ba",
+    continent: "europe"
+  },
+  {
+    countryName: "Bulgaria",
+    countryCode: "bg",
+    continent: "europe"
+  },
+  {
+    countryName: "Croatia",
+    countryCode: "hr",
+    continent: "europe"
+  },
+  {
+    countryName: "Cyprus",
+    countryCode: "cy",
+    continent: "europe"
+  },
+  {
+    countryName: "Czechia",
+    countryCode: "cz",
+    continent: "europe"
+  },
+  {
+    countryName: "Denmark",
+    countryCode: "dk",
+    continent: "europe"
+  },
+  {
+    countryName: "Estonia",
+    countryCode: "ee",
+    continent: "europe"
+  },
+  {
+    countryName: "Faroe Islands",
+    countryCode: "fo",
+    continent: "europe"
+  },
+  {
+    countryName: "Finland",
+    countryCode: "fi",
+    continent: "europe"
+  },
+  {
+    countryName: "France",
+    countryCode: "fr",
+    continent: "europe"
+  },
+  {
+    countryName: "Germany",
+    countryCode: "de",
+    continent: "europe"
+  },
+  {
+    countryName: "Gibraltar",
+    countryCode: "gi",
+    continent: "europe"
+  },
+  {
+    countryName: "Greece",
+    countryCode: "gr",
+    continent: "europe"
+  },
+  {
+    countryName: "Guernsey",
+    countryCode: "gg",
+    continent: "europe"
+  },
+  {
+    countryName: "Hungary",
+    countryCode: "hu",
+    continent: "europe"
+  },
+  {
+    countryName: "Iceland",
+    countryCode: "is",
+    continent: "europe"
+  },
+  {
+    countryName: "Ireland",
+    countryCode: "ie",
+    continent: "europe"
+  },
+  {
+    countryName: "Isle of Man",
+    countryCode: "im",
+    continent: "europe"
+  },
+  {
+    countryName: "Italy",
+    countryCode: "it",
+    continent: "europe"
+  },
+  {
+    countryName: "Jersey",
+    countryCode: "je",
+    continent: "europe"
+  },
+  {
+    countryName: "Kosovo",
+    countryCode: "xk",
+    continent: "europe"
+  },
+  {
+    countryName: "Latvia",
+    countryCode: "lv",
+    continent: "europe"
+  },
+  {
+    countryName: "Liechtenstein",
+    countryCode: "li",
+    continent: "europe"
+  },
+  {
+    countryName: "Lithuania",
+    countryCode: "lt",
+    continent: "europe"
+  },
+  {
+    countryName: "Luxembourg",
+    countryCode: "lu",
+    continent: "europe"
+  },
+  {
+    countryName: "Malta",
+    countryCode: "mt",
+    continent: "europe"
+  },
+  {
+    countryName: "Moldova",
+    countryCode: "md",
+    continent: "europe"
+  },
+  {
+    countryName: "Monaco",
+    countryCode: "mc",
+    continent: "europe"
+  },
+  {
+    countryName: "Montenegro",
+    countryCode: "me",
+    continent: "europe"
+  },
+  {
+    countryName: "Netherlands",
+    countryCode: "nl",
+    continent: "europe"
+  },
+  {
+    countryName: "North Macedonia",
+    countryCode: "mk",
+    continent: "europe"
+  },
+  {
+    countryName: "Norway",
+    countryCode: "no",
+    continent: "europe"
+  },
+  {
+    countryName: "Poland",
+    countryCode: "pl",
+    continent: "europe"
+  },
+  {
+    countryName: "Portugal",
+    countryCode: "pt",
+    continent: "europe"
+  },
+  {
+    countryName: "Romania",
+    countryCode: "ro",
+    continent: "europe"
+  },
+  {
+    countryName: "Russia",
+    countryCode: "ru",
+    continent: "europe"
+  },
+  {
+    countryName: "San Marino",
+    countryCode: "sm",
+    continent: "europe"
+  },
+  {
+    countryName: "Serbia",
+    countryCode: "rs",
+    continent: "europe"
+  },
+  {
+    countryName: "Slovakia",
+    countryCode: "sk",
+    continent: "europe"
+  },
+  {
+    countryName: "Slovenia",
+    countryCode: "si",
+    continent: "europe"
+  },
+  {
+    countryName: "Spain",
+    countryCode: "es",
+    continent: "europe"
+  },
+  {
+    countryName: "Svalbard and Jan Mayen",
+    countryCode: "sj",
+    continent: "europe"
+  },
+  {
+    countryName: "Sweden",
+    countryCode: "se",
+    continent: "europe"
+  },
+  {
+    countryName: "Switzerland",
+    countryCode: "ch",
+    continent: "europe"
+  },
+  {
+    countryName: "Turkey",
+    countryCode: "tr",
+    continent: "europe"
+  },
+  {
+    countryName: "Ukraine",
+    countryCode: "ua",
+    continent: "europe"
+  },
+  {
+    countryName: "United Kingdom",
+    countryCode: "gb",
+    continent: "europe"
+  },
+  {
+    countryName: "Vatican City",
+    countryCode: "va",
+    continent: "europe"
+  }
+];
+
+let northAmericaFlags: Flag[] = [
+  {
+    countryName: "Anguilla",
+    countryCode: "ai",
+    continent: "north-america"
+  },
+  {
+    countryName: "Antigua and Barbuda",
+    countryCode: "ag",
+    continent: "north-america"
+  },
+  {
+    countryName: "Aruba",
+    countryCode: "aw",
+    continent: "north-america"
+  },
+  {
+    countryName: "Bahamas",
+    countryCode: "bs",
+    continent: "north-america"
+  },
+  {
+    countryName: "Barbados",
+    countryCode: "bb",
+    continent: "north-america"
+  },
+  {
+    countryName: "Belize",
+    countryCode: "bz",
+    continent: "north-america"
+  },
+  {
+    countryName: "Bermuda",
+    countryCode: "bm",
+    continent: "north-america"
+  },
+  {
+    countryName: "Canada",
+    countryCode: "ca",
+    continent: "north-america"
+  },
+  {
+    countryName: "Caribbean Netherlands",
+    countryCode: "bq",
+    continent: "north-america"
+  },
+  {
+    countryName: "Cayman Islands",
+    countryCode: "ky",
+    continent: "north-america"
+  },
+  {
+    countryName: "Costa Rica",
+    countryCode: "cr",
+    continent: "north-america"
+  },
+  {
+    countryName: "Cuba",
+    countryCode: "cu",
+    continent: "north-america"
+  },
+  {
+    countryName: "Curaçao",
+    countryCode: "cw",
+    continent: "north-america"
+  },
+  {
+    countryName: "Dominica",
+    countryCode: "dm",
+    continent: "north-america"
+  },
+  {
+    countryName: "Dominican Republic",
+    countryCode: "do",
+    continent: "north-america"
+  },
+  {
+    countryName: "El Salvador",
+    countryCode: "sv",
+    continent: "north-america"
+  },
+  {
+    countryName: "Greenland",
+    countryCode: "gl",
+    continent: "north-america"
+  },
+  {
+    countryName: "Grenada",
+    countryCode: "gd",
+    continent: "north-america"
+  },
+  {
+    countryName: "Guadeloupe",
+    countryCode: "gp",
+    continent: "north-america"
+  },
+  {
+    countryName: "Guatemala",
+    countryCode: "gt",
+    continent: "north-america"
+  },
+  {
+    countryName: "Haiti",
+    countryCode: "ht",
+    continent: "north-america"
+  },
+  {
+    countryName: "Honduras",
+    countryCode: "hn",
+    continent: "north-america"
+  },
+  {
+    countryName: "Jamaica",
+    countryCode: "jm",
+    continent: "north-america"
+  },
+  {
+    countryName: "Martinique",
+    countryCode: "mq",
+    continent: "north-america"
+  },
+  {
+    countryName: "Mexico",
+    countryCode: "mx",
+    continent: "north-america"
+  },
+  {
+    countryName: "Montserrat",
+    countryCode: "ms",
+    continent: "north-america"
+  },
+  {
+    countryName: "Nicaragua",
+    countryCode: "ni",
+    continent: "north-america"
+  },
+  {
+    countryName: "Panama",
+    countryCode: "pa",
+    continent: "north-america"
+  },
+  {
+    countryName: "Puerto Rico",
+    countryCode: "pr",
+    continent: "north-america"
+  },
+  {
+    countryName: "Saint Barthélemy",
+    countryCode: "bl",
+    continent: "north-america"
+  },
+  {
+    countryName: "Saint Kitts and Nevis",
+    countryCode: "kn",
+    continent: "north-america"
+  },
+  {
+    countryName: "Saint Lucia",
+    countryCode: "lc",
+    continent: "north-america"
+  },
+  {
+    countryName: "Saint Martin",
+    countryCode: "mf",
+    continent: "north-america"
+  },
+  {
+    countryName: "Saint Pierre and Miquelon",
+    countryCode: "pm",
+    continent: "north-america"
+  },
+  {
+    countryName: "Saint Vincent and the Grenadines",
+    countryCode: "vc",
+    continent: "north-america"
+  },
+  {
+    countryName: "Sint Maarten",
+    countryCode: "sx",
+    continent: "north-america"
+  },
+  {
+    countryName: "Turks and Caicos Islands",
+    countryCode: "tc",
+    continent: "north-america"
+  },
+  {
+    countryName: "United States",
+    countryCode: "us",
+    continent: "north-america"
+  },
+  {
+    countryName: "United States Minor Outlying Islands",
+    countryCode: "um",
+    continent: "north-america"
+  },
+  {
+    countryName: "British Virgin Islands",
+    countryCode: "vg",
+    continent: "north-america"
+  },
+  {
+    countryName: "United States Virgin Islands",
+    countryCode: "vi",
+    continent: "north-america"
+  }
+];
+
+let oceaniaFlags: Flag[] = [
+  {
+    countryName: "American Samoa",
+    countryCode: "as",
+    continent: "oceania"
+  },
+  {
+    countryName: "Australia",
+    countryCode: "au",
+    continent: "oceania"
+  },
+  {
+    countryName: "Christmas Island",
+    countryCode: "cx",
+    continent: "oceania"
+  },
+  {
+    countryName: "Cocos Islands",
+    countryCode: "cc",
+    continent: "oceania"
+  },
+  {
+    countryName: "Cook Islands",
+    countryCode: "ck",
+    continent: "oceania"
+  },
+  {
+    countryName: "Fiji",
+    countryCode: "fj",
+    continent: "oceania"
+  },
+  {
+    countryName: "French Polynesia",
+    countryCode: "pf",
+    continent: "oceania"
+  },
+  {
+    countryName: "Guam",
+    countryCode: "gu",
+    continent: "oceania"
+  },
+  {
+    countryName: "Indonesia",
+    countryCode: "id",
+    continent: "oceania"
+  },
+  {
+    countryName: "Kiribati",
+    countryCode: "ki",
+    continent: "oceania"
+  },
+  {
+    countryName: "Marshall Islands",
+    countryCode: "mh",
+    continent: "oceania"
+  },
+  {
+    countryName: "Micronesia",
+    countryCode: "fm",
+    continent: "oceania"
+  },
+  {
+    countryName: "Nauru",
+    countryCode: "nr",
+    continent: "oceania"
+  },
+  {
+    countryName: "New Caledonia",
+    countryCode: "nc",
+    continent: "oceania"
+  },
+  {
+    countryName: "New Zealand",
+    countryCode: "nz",
+    continent: "oceania"
+  },
+  {
+    countryName: "Niue",
+    countryCode: "nu",
+    continent: "oceania"
+  },
+  {
+    countryName: "Norfolk Island",
+    countryCode: "nf",
+    continent: "oceania"
+  },
+  {
+    countryName: "Northern Mariana Islands",
+    countryCode: "mp",
+    continent: "oceania"
+  },
+  {
+    countryName: "Palau",
+    countryCode: "pw",
+    continent: "oceania"
+  },
+  {
+    countryName: "Papua New Guinea",
+    countryCode: "pg",
+    continent: "oceania"
+  },
+  {
+    countryName: "Pitcairn Islands",
+    countryCode: "pn",
+    continent: "oceania"
+  },
+  {
+    countryName: "Samoa",
+    countryCode: "ws",
+    continent: "oceania"
+  },
+  {
+    countryName: "Solomon Islands",
+    countryCode: "sb",
+    continent: "oceania"
+  },
+  {
+    countryName: "Tokelau",
+    countryCode: "tk",
+    continent: "oceania"
+  },
+  {
+    countryName: "Tonga",
+    countryCode: "to",
+    continent: "oceania"
+  },
+  {
+    countryName: "Tuvalu",
+    countryCode: "tv",
+    continent: "oceania"
+  },
+  {
+    countryName: "Vanuatu",
+    countryCode: "vu",
+    continent: "oceania"
+  },
+  {
+    countryName: "Wallis and Futuna",
+    countryCode: "wf",
+    continent: "oceania"
+  }
+];
+
+let southAmericaFlags: Flag[] = [
+  {
+    countryName: "Argentina",
+    countryCode: "ar",
+    continent: "south-america"
+  },
+  {
+    countryName: "Bolivia",
+    countryCode: "bo",
+    continent: "south-america"
+  },
+  {
+    countryName: "Brazil",
+    countryCode: "br",
+    continent: "south-america"
+  },
+  {
+    countryName: "Chile",
+    countryCode: "cl",
+    continent: "south-america"
+  },
+  {
+    countryName: "Colombia",
+    countryCode: "co",
+    continent: "south-america"
+  },
+  {
+    countryName: "Ecuador",
+    countryCode: "ec",
+    continent: "south-america"
+  },
+  {
+    countryName: "Falkland Islands",
+    countryCode: "fk",
+    continent: "south-america"
+  },
+  {
+    countryName: "French Guiana",
+    countryCode: "gf",
+    continent: "south-america"
+  },
+  {
+    countryName: "Guyana",
+    countryCode: "gy",
+    continent: "south-america"
+  },
+  {
+    countryName: "Paraguay",
+    countryCode: "py",
+    continent: "south-america"
+  },
+  {
+    countryName: "Peru",
+    countryCode: "pe",
+    continent: "south-america"
+  },
+  {
+    countryName: "Suriname",
+    countryCode: "sr",
+    continent: "south-america"
+  },
+  {
+    countryName: "Trinidad and Tobago",
+    countryCode: "tt",
+    continent: "south-america"
+  },
+  {
+    countryName: "Uruguay",
+    countryCode: "uy",
+    continent: "south-america"
+  },
+  {
+    countryName: "Venezuela",
+    countryCode: "ve",
+    continent: "south-america"
+  }
+];
+
+let flags = [
+  africaFlags,
+  asiaFlags,
+  europeFlags,
+  oceaniaFlags,
+  southAmericaFlags,
+  northAmericaFlags
+].flat();

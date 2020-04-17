@@ -1,5 +1,5 @@
 import React, { useReducer } from "react";
-import { getFlags, Flag } from "./utils/flags";
+import { getFlags, getFlagImgPath, Flag } from "./utils/flags";
 import { getPlayers } from "./utils/players";
 import { classNames } from "./utils/class-names";
 import { UButton } from "./components/u-button";
@@ -64,9 +64,8 @@ export default function GuessTheFlag() {
         <h1 className="tc">How many players?</h1>
         <div className="tc">
           {[2, 3, 4, 5].map(n => (
-            <span className="pa1">
+            <span key={n} className="pa1">
               <UButton
-                key={n}
                 onClick={() => dispatch(startGame(n))}
                 label={n.toString()}
               />
@@ -85,8 +84,8 @@ export default function GuessTheFlag() {
       <div>
         {GameBoardScreen(state)}
         <h1 className="tc">Guess the flag</h1>
-        <img className="game-board-img" src={flag.imgUrl} alt="Flag" />
-        <div className="tc fs4 invisible">{flag.countryName}</div>
+        <img className="game-board-img" src={getFlagImgPath(flag)} alt="Flag" />
+        <div className="tc fs4 mt2 mb2 invisible">{flag.countryName}</div>
         <div className="tc">
           <button className="button" onClick={() => dispatch(revealAnswer())}>
             Show me
@@ -104,8 +103,8 @@ export default function GuessTheFlag() {
       <div>
         {GameBoardScreen(state)}
         <h1 className="tc">Guess the flag</h1>
-        <img className="game-board-img" src={flag.imgUrl} alt="Flag" />
-        <div className="tc fs4">{flag.countryName}</div>
+        <img className="game-board-img" src={getFlagImgPath(flag)} alt="Flag" />
+        <div className="tc fs4 mt2 mb2">{flag.countryName}</div>
         <div className="tc">
           <button
             className="button mr1"
