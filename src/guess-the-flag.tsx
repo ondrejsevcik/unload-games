@@ -45,7 +45,14 @@ export default function GuessTheFlag() {
     return (
       <div className="flex flex-column items-center">
         <h1 className="tc">It's over!!</h1>
-        <h3>The winner is {state.winnerName}</h3>
+        <h3>The results</h3>
+        {state.playerResults
+          .sort((pA, pB) => pA.score - pB.score)
+          .map(player => (
+            <div>
+              {player.name} - {player.score}
+            </div>
+          ))}
         <button className="button" onClick={() => dispatch(goToSetup())}>
           New game
         </button>
@@ -175,7 +182,7 @@ interface AnswerState {
 
 interface ResultState {
   kind: "result";
-  winnerName: string;
+  playerResults: Player[];
 }
 
 type State = SetupState | QuestionState | AnswerState | ResultState;
@@ -257,8 +264,7 @@ export function reducer(state: State, action: Actions): State {
         // TODO they can have a same amount of points
         return {
           kind: "result",
-          winnerName: state.players.sort((p1, p2) => p1.score - p2.score)[0]
-            .name
+          playerResults: state.players
         };
       }
 
@@ -288,8 +294,7 @@ export function reducer(state: State, action: Actions): State {
         // TODO they can have a same amount of points
         return {
           kind: "result",
-          winnerName: state.players.sort((p1, p2) => p1.score - p2.score)[0]
-            .name
+          playerResults: state.players
         };
       }
 
