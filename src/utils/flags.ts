@@ -1,11 +1,32 @@
 import { shuffle } from "./shuffle";
 
-export function getFlags(count = 0): Flag[] {
-  if (count < 1) {
-    return shuffle(flags);
+export function getFlags(continent: Continent | null): Flag[] {
+  let flags;
+  switch (continent) {
+    case "africa":
+      flags = africaFlags;
+      break;
+    case "asia":
+      flags = asiaFlags;
+      break;
+    case "europe":
+      flags = europeFlags;
+      break;
+    case "north-america":
+      flags = northAmericaFlags;
+      break;
+    case "oceania":
+      flags = oceaniaFlags;
+      break;
+    case "south-america":
+      flags = oceaniaFlags;
+      break;
+    default:
+      flags = allFlags;
+      break;
   }
 
-  return shuffle(flags).slice(0, count);
+  return shuffle(flags);
 }
 
 export function getFlagImgPath(flag: Flag) {
@@ -20,13 +41,17 @@ export type Continent =
   | "oceania"
   | "south-america";
 
-export const continents = [
-  { countryName: "Africa", value: "africa" },
-  { countryName: "Asia", value: "asia" },
-  { countryName: "Europe", value: "europe" },
-  { countryName: "North America", value: "north-america" },
-  { countryName: "Oceania", value: "oceania" },
-  { countryName: "South America", value: "south-america" }
+export const continentOptions: {
+  label: string;
+  value: Continent | null;
+}[] = [
+  { label: "All", value: null },
+  { label: "Africa", value: "africa" },
+  { label: "Asia", value: "asia" },
+  { label: "Europe", value: "europe" },
+  { label: "North America", value: "north-america" },
+  { label: "Oceania", value: "oceania" },
+  { label: "South America", value: "south-america" }
 ];
 
 export interface Flag {
@@ -1293,7 +1318,7 @@ let southAmericaFlags: Flag[] = [
   }
 ];
 
-let flags = [
+let allFlags = [
   africaFlags,
   asiaFlags,
   europeFlags,
