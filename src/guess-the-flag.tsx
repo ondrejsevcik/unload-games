@@ -31,10 +31,7 @@ export default function GuessTheFlag() {
           {state.players.map((player, index) => (
             <div
               key={player.name}
-              className={classNames({
-                inline: true,
-                pa1: true,
-                br1: true,
+              className={classNames("inline", "pa1", "br1", {
                 "game-board-player__active": index === currentPlayerIndex
               })}
             >
