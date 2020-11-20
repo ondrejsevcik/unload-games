@@ -27,11 +27,11 @@ export default function GuessTheFlag() {
             style={{ width: `${percentComplete}%` }}
           />
         </div>
-        <div className="tc block">
+        <div className="text-center block">
           {state.players.map((player, index) => (
             <div
               key={player.name}
-              className={classNames("inline", "pa1", "br1", {
+              className={classNames("inline", "pa-1", "rounded", {
                 "game-board-player__active": index === currentPlayerIndex
               })}
             >
@@ -46,8 +46,8 @@ export default function GuessTheFlag() {
 
   function ResultView(state: ResultState) {
     return (
-      <div className="flex flex-column items-center">
-        <h1 className="tc">It's over!!</h1>
+      <div className="flex flex-col items-center">
+        <h1 className="text-center">It's over!!</h1>
         <h3>The results</h3>
         {state.playerResults
           .sort((pA, pB) => pA.score - pB.score)
@@ -65,16 +65,12 @@ export default function GuessTheFlag() {
 
   function SetupView(state: SetupState) {
     return (
-      <div className="max-width-1">
-        <h1 className="tc fs3">
-          Guess the Flag
-          <br />
-          <span className="fs6">with Friends</span>
-        </h1>
-        <h2 className="tc">How many players?</h2>
-        <div className="tc">
+      <div className="max-w-sm">
+        <h1 className="text-center text-3xl">Guess the Flag</h1>
+        <h2 className="text-center">How many players?</h2>
+        <div className="text-center">
           {[2, 3, 4, 5].map(n => (
-            <span key={n} className="pa1">
+            <span key={n} className="pa-1">
               <UButton
                 onClick={() =>
                   dispatch(updateSetup(n, state.selectedContinent))
@@ -84,10 +80,10 @@ export default function GuessTheFlag() {
             </span>
           ))}
         </div>
-        <h2 className="tc">What continents?</h2>
+        <h2 className="text-center">What continents?</h2>
         <div>
           {continentOptions.map(continentOption => (
-            <span key={continentOption.label} className="pa1">
+            <span key={continentOption.label} className="pa-1">
               <UButton
                 onClick={() =>
                   dispatch(
@@ -120,10 +116,12 @@ export default function GuessTheFlag() {
     return (
       <div>
         {GameBoardScreen(state)}
-        <h1 className="tc">Guess the flag</h1>
+        <h1 className="text-center">Guess the flag</h1>
         <img className="game-board-img" src={getFlagImgPath(flag)} alt="Flag" />
-        <div className="tc fs4 mt2 mb2 invisible">{flag.countryName}</div>
-        <div className="tc">
+        <div className="text-center text-2xl mt-2 mb-2 invisible">
+          {flag.countryName}
+        </div>
+        <div className="text-center">
           <button className="button" onClick={() => dispatch(revealAnswer())}>
             Show me
           </button>
@@ -139,12 +137,12 @@ export default function GuessTheFlag() {
     return (
       <div>
         {GameBoardScreen(state)}
-        <h1 className="tc">Guess the flag</h1>
+        <h1 className="text-center">Guess the flag</h1>
         <img className="game-board-img" src={getFlagImgPath(flag)} alt="Flag" />
-        <div className="tc fs4 mt2 mb2">{flag.countryName}</div>
-        <div className="tc">
+        <div className="text-center text-2xl mt-2 mb-2">{flag.countryName}</div>
+        <div className="text-center">
           <button
-            className="button mr1"
+            className="button mr-1"
             onClick={() => dispatch(markAsCorrectAnswer())}
           >
             <span role="img" aria-label="Correct">
@@ -164,18 +162,26 @@ export default function GuessTheFlag() {
     );
   }
 
+  let view: JSX.Element = <div />;
   switch (state.kind) {
     case "setup":
-      return SetupView(state);
+      view = SetupView(state);
+      break;
     case "question":
-      return QuestionView(state);
+      view = QuestionView(state);
+      break;
     case "answer":
-      return AnswerView(state);
+      view = AnswerView(state);
+      break;
     case "result":
-      return ResultView(state);
+      view = ResultView(state);
+      break;
     default:
       assertNever(state);
+      break;
   }
+
+  return <div className="text-center mt-2 flex">{view}</div>;
 }
 
 function assertNever(x: never): never {

@@ -1,5 +1,5 @@
 .u-button {
-  font-size: var(--fs6);
+  font-size: 1rem;
   color: var(--color-white);
   padding: var(--s1) var(--s4);
   background: var(--color-turqouise-light);

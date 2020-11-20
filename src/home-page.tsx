@@ -5,8 +5,8 @@ import "./home-page.css";
 
 export function HomePage() {
   return (
-    <div className="tc mt2">
-      <img src="logo.svg" alt="Unload Games logo" className="max-width-1" />
+    <div className="text-center mt-2">
+      <img src="logo.svg" alt="Unload Games logo" className="max-w-sm" />
       <nav className="menu">
         <Link to={appRoutes.guessTheFlag} className="menu__item">
           Guess the flag

@@ -6,15 +6,17 @@ import { appRoutes } from "./app-routes";
 
 export function App() {
   return (
-    <Router>
-      <Switch>
-        <Route path={appRoutes.guessTheFlag}>
-          <GuessTheFlag />
-        </Route>
-        <Route path={appRoutes.home}>
-          <HomePage />
-        </Route>
-      </Switch>
-    </Router>
+    <div className="max-w-sm m-auto">
+      <Router>
+        <Switch>
+          <Route path={appRoutes.guessTheFlag}>
+            <GuessTheFlag />
+          </Route>
+          <Route path={appRoutes.home}>
+            <HomePage />
+          </Route>
+        </Switch>
+      </Router>
+    </div>
   );
 }
