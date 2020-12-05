@@ -27,15 +27,15 @@ export default function GuessTheFlag() {
             style={{ width: `${percentComplete}%` }}
           />
         </div>
-        <div className="text-center block">
+        <div className="flex justify-center">
           {state.players.map((player, index) => (
             <div
               key={player.name}
-              className={classNames("inline", "pa-1", "rounded", {
+              className={classNames("inline", "p-1", "m-1", "rounded", {
                 "game-board-player__active": index === currentPlayerIndex
               })}
             >
-              <span>{player.name}&nbsp;</span>
+              <span className="mr-1">{player.name}</span>
               <span>{player.score}</span>
             </div>
           ))}
@@ -66,12 +66,14 @@ export default function GuessTheFlag() {
   function SetupView(state: SetupState) {
     return (
       <div className="max-w-sm">
-        <h1 className="text-center text-3xl">Guess the Flag</h1>
-        <h2 className="text-center">How many players?</h2>
-        <div className="text-center">
+        <h1 className="text-center text-3xl mt-3">Guess the Flag</h1>
+        <h2 className="text-center mt-3">How many players?</h2>
+        <div className="flex justify-center my-2">
           {[2, 3, 4, 5].map(n => (
-            <span key={n} className="pa-1">
+            <span className="m-1">
               <UButton
+                key={n}
+                isSelected={state.numberOfPlayers === n}
                 onClick={() =>
                   dispatch(updateSetup(n, state.selectedContinent))
                 }
@@ -80,11 +82,12 @@ export default function GuessTheFlag() {
             </span>
           ))}
         </div>
-        <h2 className="text-center">What continents?</h2>
-        <div>
+        <h2 className="text-center mt-3 mb-2">What continents?</h2>
+        <div className="flex justify-center flex-wrap">
           {continentOptions.map(continentOption => (
-            <span key={continentOption.label} className="pa-1">
+            <span key={continentOption.label} className="m-1">
               <UButton
+                isSelected={state.selectedContinent === continentOption.value}
                 onClick={() =>
                   dispatch(
                     updateSetup(state.numberOfPlayers, continentOption.value)
@@ -95,7 +98,7 @@ export default function GuessTheFlag() {
             </span>
           ))}
         </div>
-        <div>
+        <div className="text-center mt-6">
           <UButton
             onClick={() =>
               dispatch(
@@ -114,9 +117,9 @@ export default function GuessTheFlag() {
     let flag = state.remainingFlags[0];
 
     return (
-      <div>
+      <div className="flex-grow">
         {GameBoardScreen(state)}
-        <h1 className="text-center">Guess the flag</h1>
+        <h1 className="text-center mt-3">Guess the flag</h1>
         <img className="game-board-img" src={getFlagImgPath(flag)} alt="Flag" />
         <div className="text-center text-2xl mt-2 mb-2 invisible">
           {flag.countryName}
@@ -135,9 +138,9 @@ export default function GuessTheFlag() {
     let flag = state.remainingFlags[0];
 
     return (
-      <div>
+      <div className="flex-grow">
         {GameBoardScreen(state)}
-        <h1 className="text-center">Guess the flag</h1>
+        <h1 className="text-center mt-3">Guess the flag</h1>
         <img className="game-board-img" src={getFlagImgPath(flag)} alt="Flag" />
         <div className="text-center text-2xl mt-2 mb-2">{flag.countryName}</div>
         <div className="text-center">
@@ -181,7 +184,7 @@ export default function GuessTheFlag() {
       break;
   }
 
-  return <div className="text-center mt-2 flex">{view}</div>;
+  return <div className="justify-center flex">{view}</div>;
 }
 
 function assertNever(x: never): never {
