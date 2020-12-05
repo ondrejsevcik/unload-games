@@ -5,6 +5,7 @@
   min-width: 20%;
   display: inline-block;
   background: var(--color-turqouise-light);
+  border-radius: 0.25rem;
   text-decoration: none;
   text-align: center;
   cursor: pointer;
@@ -20,6 +21,7 @@
   text-align: center;
   display: block;
   margin: auto;
+  border-radius: 0.25rem;
   border: 1px solid rgba(0, 0, 0, 0.1);
 }
 

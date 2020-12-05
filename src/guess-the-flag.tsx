@@ -70,10 +70,13 @@ export default function GuessTheFlag() {
         <h2 className="text-center mt-3">How many players?</h2>
         <div className="flex justify-center my-2">
           {[2, 3, 4, 5].map(n => (
-            <span className="m-1">
+            <span
+              className={classNames("m-1", {
+                "opacity-50": state.numberOfPlayers !== n
+              })}
+            >
               <UButton
                 key={n}
-                isSelected={state.numberOfPlayers === n}
                 onClick={() =>
                   dispatch(updateSetup(n, state.selectedContinent))
                 }
@@ -85,9 +88,13 @@ export default function GuessTheFlag() {
         <h2 className="text-center mt-3 mb-2">What continents?</h2>
         <div className="flex justify-center flex-wrap">
           {continentOptions.map(continentOption => (
-            <span key={continentOption.label} className="m-1">
+            <span
+              key={continentOption.label}
+              className={classNames("m-1", {
+                "opacity-50": state.selectedContinent !== continentOption.value
+              })}
+            >
               <UButton
-                isSelected={state.selectedContinent === continentOption.value}
                 onClick={() =>
                   dispatch(
                     updateSetup(state.numberOfPlayers, continentOption.value)
