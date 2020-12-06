@@ -12,6 +12,29 @@ export function HomePage() {
           Guess the flag
         </Link>
       </nav>
+      <div className="mt-8 text-gray-400 text-sm">
+        <div>
+          <span>Made by </span>
+          <a
+            href="https://twitter.com/ondrejsevcik"
+            rel="noopener noreferrer"
+            target="_blank"
+            className="underline"
+          >
+            @ondrejsevcik
+          </a>
+        </div>
+        <div>
+          <a
+            href="https://github.com/ondrejsevcik/unload-games"
+            rel="noopener noreferrer"
+            target="_blank"
+            className="underline"
+          >
+            [source]
+          </a>
+        </div>
+      </div>
     </div>
   );
 }
