@@ -85,7 +85,7 @@ export default function GuessTheFlag() {
             </span>
           ))}
         </div>
-        <h2 className="text-center mt-3 mb-2">What continents?</h2>
+        <h2 className="text-center mt-3 mb-2">What continent?</h2>
         <div className="flex justify-center flex-wrap">
           {continentOptions.map(continentOption => (
             <span
