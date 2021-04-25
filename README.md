@@ -1,3 +1,3 @@
 # unload-games
 
-Play at https://unload.games
+Play at https://ondrejsevcik.github.io/unload-games/
