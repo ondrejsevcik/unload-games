@@ -16,12 +16,12 @@ export function HomePage() {
         <div>
           <span>Made by </span>
           <a
-            href="https://twitter.com/ondrejsevcik"
+            href="https://ondrejsevcik.com"
             rel="noopener noreferrer"
             target="_blank"
             className="underline"
           >
-            @ondrejsevcik
+            Ondrej Sevcik
           </a>
         </div>
         <div>
