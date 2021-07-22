@@ -30,7 +30,9 @@ export function getFlags(continent: Continent | null): Flag[] {
 }
 
 export function getFlagImgPath(flag: Flag) {
-  return `/img-flags/${flag.countryCode}.png`;
+  // TODO - this was a quick fix to fix deployment to github
+  let domain = '/unload-games'
+  return `${domain}/img-flags/${flag.countryCode}.png`;
 }
 
 export type Continent =
