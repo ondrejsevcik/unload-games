@@ -71,12 +71,12 @@ export default function GuessTheFlag() {
         <div className="flex justify-center my-2">
           {[2, 3, 4, 5].map((n) => (
             <span
+              key={n}
               className={classNames("m-1", {
                 "opacity-50": state.numberOfPlayers !== n,
               })}
             >
               <UButton
-                key={n}
                 onClick={() =>
                   dispatch(updateSetup(n, state.selectedContinent))
                 }
