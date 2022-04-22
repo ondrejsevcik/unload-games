@@ -1,4 +1,4 @@
 export const appRoutes = {
   home: "/",
-  guessTheFlag: "/guess-the-flag"
+  guessTheFlag: "/guess-the-flag",
 };

@@ -31,7 +31,7 @@ export function getFlags(continent: Continent | null): Flag[] {
 
 export function getFlagImgPath(flag: Flag) {
   // TODO - this was a quick fix to fix deployment to github
-  let domain = '/unload-games'
+  let domain = "/unload-games";
   return `${domain}/img-flags/${flag.countryCode}.png`;
 }
 
@@ -53,7 +53,7 @@ export const continentOptions: {
   { label: "Europe", value: "europe" },
   { label: "North America", value: "north-america" },
   { label: "Oceania", value: "oceania" },
-  { label: "South America", value: "south-america" }
+  { label: "South America", value: "south-america" },
 ];
 
 export interface Flag {
@@ -66,1258 +66,1258 @@ let africaFlags: Flag[] = [
   {
     countryName: "Algeria",
     countryCode: "dz",
-    continent: "africa"
+    continent: "africa",
   },
   {
     countryName: "Angola",
     countryCode: "ao",
-    continent: "africa"
+    continent: "africa",
   },
   {
     countryName: "Benin",
     countryCode: "bj",
-    continent: "africa"
+    continent: "africa",
   },
   {
     countryName: "Botswana",
     countryCode: "bw",
-    continent: "africa"
+    continent: "africa",
   },
   {
     countryName: "British Indian Ocean Territory",
     countryCode: "io",
-    continent: "africa"
+    continent: "africa",
   },
   {
     countryName: "Burkina Faso",
     countryCode: "bf",
-    continent: "africa"
+    continent: "africa",
   },
   {
     countryName: "Burundi",
     countryCode: "bi",
-    continent: "africa"
+    continent: "africa",
   },
   {
     countryName: "Cameroon",
     countryCode: "cm",
-    continent: "africa"
+    continent: "africa",
   },
   {
     countryName: "Cape Verde",
     countryCode: "cv",
-    continent: "africa"
+    continent: "africa",
   },
   {
     countryName: "Central African Republic",
     countryCode: "cf",
-    continent: "africa"
+    continent: "africa",
   },
   {
     countryName: "Chad",
     countryCode: "td",
-    continent: "africa"
+    continent: "africa",
   },
   {
     countryName: "Comoros",
     countryCode: "km",
-    continent: "africa"
+    continent: "africa",
   },
   {
     countryName: "Republic of the Congo",
     countryCode: "cg",
-    continent: "africa"
+    continent: "africa",
   },
   {
     countryName: "DR Congo",
     countryCode: "cd",
-    continent: "africa"
+    continent: "africa",
   },
   {
     countryName: "Côte d'Ivoire",
     countryCode: "ci",
-    continent: "africa"
+    continent: "africa",
   },
   {
     countryName: "Djibouti",
     countryCode: "dj",
-    continent: "africa"
+    continent: "africa",
   },
   {
     countryName: "Egypt",
     countryCode: "eg",
-    continent: "africa"
+    continent: "africa",
   },
   {
     countryName: "Equatorial Guinea",
     countryCode: "gq",
-    continent: "africa"
+    continent: "africa",
   },
   {
     countryName: "Eritrea",
     countryCode: "er",
-    continent: "africa"
+    continent: "africa",
   },
   {
     countryName: "Eswatini",
     countryCode: "sz",
-    continent: "africa"
+    continent: "africa",
   },
   {
     countryName: "Ethiopia",
     countryCode: "et",
-    continent: "africa"
+    continent: "africa",
   },
   {
     countryName: "Gabon",
     countryCode: "ga",
-    continent: "africa"
+    continent: "africa",
   },
   {
     countryName: "Gambia",
     countryCode: "gm",
-    continent: "africa"
+    continent: "africa",
   },
   {
     countryName: "Ghana",
     countryCode: "gh",
-    continent: "africa"
+    continent: "africa",
   },
   {
     countryName: "Guinea",
     countryCode: "gn",
-    continent: "africa"
+    continent: "africa",
   },
   {
     countryName: "Guinea-Bissau",
     countryCode: "gw",
-    continent: "africa"
+    continent: "africa",
   },
   {
     countryName: "Kenya",
     countryCode: "ke",
-    continent: "africa"
+    continent: "africa",
   },
   {
     countryName: "Lesotho",
     countryCode: "ls",
-    continent: "africa"
+    continent: "africa",
   },
   {
     countryName: "Liberia",
     countryCode: "lr",
-    continent: "africa"
+    continent: "africa",
   },
   {
     countryName: "Libya",
     countryCode: "ly",
-    continent: "africa"
+    continent: "africa",
   },
   {
     countryName: "Madagascar",
     countryCode: "mg",
-    continent: "africa"
+    continent: "africa",
   },
   {
     countryName: "Malawi",
     countryCode: "mw",
-    continent: "africa"
+    continent: "africa",
   },
   {
     countryName: "Mali",
     countryCode: "ml",
-    continent: "africa"
+    continent: "africa",
   },
   {
     countryName: "Mauritania",
     countryCode: "mr",
-    continent: "africa"
+    continent: "africa",
   },
   {
     countryName: "Mauritius",
     countryCode: "mu",
-    continent: "africa"
+    continent: "africa",
   },
   {
     countryName: "Mayotte",
     countryCode: "yt",
-    continent: "africa"
+    continent: "africa",
   },
   {
     countryName: "Morocco",
     countryCode: "ma",
-    continent: "africa"
+    continent: "africa",
   },
   {
     countryName: "Mozambique",
     countryCode: "mz",
-    continent: "africa"
+    continent: "africa",
   },
   {
     countryName: "Namibia",
     countryCode: "na",
-    continent: "africa"
+    continent: "africa",
   },
   {
     countryName: "Niger",
     countryCode: "ne",
-    continent: "africa"
+    continent: "africa",
   },
   {
     countryName: "Nigeria",
     countryCode: "ng",
-    continent: "africa"
+    continent: "africa",
   },
   {
     countryName: "Réunion",
     countryCode: "re",
-    continent: "africa"
+    continent: "africa",
   },
   {
     countryName: "Rwanda",
     countryCode: "rw",
-    continent: "africa"
+    continent: "africa",
   },
   {
     countryName: "Saint Helena, Ascension and Tristan da Cunha",
     countryCode: "sh",
-    continent: "africa"
+    continent: "africa",
   },
   {
     countryName: "São Tomé and Príncipe",
     countryCode: "st",
-    continent: "africa"
+    continent: "africa",
   },
   {
     countryName: "Senegal",
     countryCode: "sn",
-    continent: "africa"
+    continent: "africa",
   },
   {
     countryName: "Seychelles",
     countryCode: "sc",
-    continent: "africa"
+    continent: "africa",
   },
   {
     countryName: "Sierra Leone",
     countryCode: "sl",
-    continent: "africa"
+    continent: "africa",
   },
   {
     countryName: "Somalia",
     countryCode: "so",
-    continent: "africa"
+    continent: "africa",
   },
   {
     countryName: "South Africa",
     countryCode: "za",
-    continent: "africa"
+    continent: "africa",
   },
   {
     countryName: "South Sudan",
     countryCode: "ss",
-    continent: "africa"
+    continent: "africa",
   },
   {
     countryName: "Sudan",
     countryCode: "sd",
-    continent: "africa"
+    continent: "africa",
   },
   {
     countryName: "Tanzania",
     countryCode: "tz",
-    continent: "africa"
+    continent: "africa",
   },
   {
     countryName: "Togo",
     countryCode: "tg",
-    continent: "africa"
+    continent: "africa",
   },
   {
     countryName: "Tunisia",
     countryCode: "tn",
-    continent: "africa"
+    continent: "africa",
   },
   {
     countryName: "Uganda",
     countryCode: "ug",
-    continent: "africa"
+    continent: "africa",
   },
   {
     countryName: "Western Sahara",
     countryCode: "eh",
-    continent: "africa"
+    continent: "africa",
   },
   {
     countryName: "Zambia",
     countryCode: "zm",
-    continent: "africa"
+    continent: "africa",
   },
   {
     countryName: "Zimbabwe",
     countryCode: "zw",
-    continent: "africa"
-  }
+    continent: "africa",
+  },
 ];
 
 let asiaFlags: Flag[] = [
   {
     countryName: "Armenia",
     countryCode: "am",
-    continent: "asia"
+    continent: "asia",
   },
   {
     countryName: "Azerbaijan",
     countryCode: "az",
-    continent: "asia"
+    continent: "asia",
   },
   {
     countryName: "Bahrain",
     countryCode: "bh",
-    continent: "asia"
+    continent: "asia",
   },
   {
     countryName: "Bangladesh",
     countryCode: "bd",
-    continent: "asia"
+    continent: "asia",
   },
   {
     countryName: "Bhutan",
     countryCode: "bt",
-    continent: "asia"
+    continent: "asia",
   },
   {
     countryName: "Brunei",
     countryCode: "bn",
-    continent: "asia"
+    continent: "asia",
   },
   {
     countryName: "Cambodia",
     countryCode: "kh",
-    continent: "asia"
+    continent: "asia",
   },
   {
     countryName: "China",
     countryCode: "cn",
-    continent: "asia"
+    continent: "asia",
   },
   {
     countryName: "Egypt",
     countryCode: "eg",
-    continent: "asia"
+    continent: "asia",
   },
   {
     countryName: "Georgia",
     countryCode: "ge",
-    continent: "asia"
+    continent: "asia",
   },
   {
     countryName: "Hong Kong",
     countryCode: "hk",
-    continent: "asia"
+    continent: "asia",
   },
   {
     countryName: "India",
     countryCode: "in",
-    continent: "asia"
+    continent: "asia",
   },
   {
     countryName: "Indonesia",
     countryCode: "id",
-    continent: "asia"
+    continent: "asia",
   },
   {
     countryName: "Iran",
     countryCode: "ir",
-    continent: "asia"
+    continent: "asia",
   },
   {
     countryName: "Iraq",
     countryCode: "iq",
-    continent: "asia"
+    continent: "asia",
   },
   {
     countryName: "Israel",
     countryCode: "il",
-    continent: "asia"
+    continent: "asia",
   },
   {
     countryName: "Japan",
     countryCode: "jp",
-    continent: "asia"
+    continent: "asia",
   },
   {
     countryName: "Jordan",
     countryCode: "jo",
-    continent: "asia"
+    continent: "asia",
   },
   {
     countryName: "Kazakhstan",
     countryCode: "kz",
-    continent: "asia"
+    continent: "asia",
   },
   {
     countryName: "North Korea",
     countryCode: "kp",
-    continent: "asia"
+    continent: "asia",
   },
   {
     countryName: "South Korea",
     countryCode: "kr",
-    continent: "asia"
+    continent: "asia",
   },
   {
     countryName: "Kuwait",
     countryCode: "kw",
-    continent: "asia"
+    continent: "asia",
   },
   {
     countryName: "Kyrgyzstan",
     countryCode: "kg",
-    continent: "asia"
+    continent: "asia",
   },
   {
     countryName: "Laos",
     countryCode: "la",
-    continent: "asia"
+    continent: "asia",
   },
   {
     countryName: "Lebanon",
     countryCode: "lb",
-    continent: "asia"
+    continent: "asia",
   },
   {
     countryName: "Macau",
     countryCode: "mo",
-    continent: "asia"
+    continent: "asia",
   },
   {
     countryName: "Malaysia",
     countryCode: "my",
-    continent: "asia"
+    continent: "asia",
   },
   {
     countryName: "Maldives",
     countryCode: "mv",
-    continent: "asia"
+    continent: "asia",
   },
   {
     countryName: "Mongolia",
     countryCode: "mn",
-    continent: "asia"
+    continent: "asia",
   },
   {
     countryName: "Myanmar",
     countryCode: "mm",
-    continent: "asia"
+    continent: "asia",
   },
   {
     countryName: "Nepal",
     countryCode: "np",
-    continent: "asia"
+    continent: "asia",
   },
   {
     countryName: "Oman",
     countryCode: "om",
-    continent: "asia"
+    continent: "asia",
   },
   {
     countryName: "Pakistan",
     countryCode: "pk",
-    continent: "asia"
+    continent: "asia",
   },
   {
     countryName: "Palestine",
     countryCode: "ps",
-    continent: "asia"
+    continent: "asia",
   },
   {
     countryName: "Philippines",
     countryCode: "ph",
-    continent: "asia"
+    continent: "asia",
   },
   {
     countryName: "Qatar",
     countryCode: "qa",
-    continent: "asia"
+    continent: "asia",
   },
   {
     countryName: "Russia",
     countryCode: "ru",
-    continent: "asia"
+    continent: "asia",
   },
   {
     countryName: "Saudi Arabia",
     countryCode: "sa",
-    continent: "asia"
+    continent: "asia",
   },
   {
     countryName: "Singapore",
     countryCode: "sg",
-    continent: "asia"
+    continent: "asia",
   },
   {
     countryName: "Sri Lanka",
     countryCode: "lk",
-    continent: "asia"
+    continent: "asia",
   },
   {
     countryName: "Syria",
     countryCode: "sy",
-    continent: "asia"
+    continent: "asia",
   },
   {
     countryName: "Taiwan",
     countryCode: "tw",
-    continent: "asia"
+    continent: "asia",
   },
   {
     countryName: "Tajikistan",
     countryCode: "tj",
-    continent: "asia"
+    continent: "asia",
   },
   {
     countryName: "Thailand",
     countryCode: "th",
-    continent: "asia"
+    continent: "asia",
   },
   {
     countryName: "Timor-Leste",
     countryCode: "tl",
-    continent: "asia"
+    continent: "asia",
   },
   {
     countryName: "Turkey",
     countryCode: "tr",
-    continent: "asia"
+    continent: "asia",
   },
   {
     countryName: "Turkmenistan",
     countryCode: "tm",
-    continent: "asia"
+    continent: "asia",
   },
   {
     countryName: "United Arab Emirates",
     countryCode: "ae",
-    continent: "asia"
+    continent: "asia",
   },
   {
     countryName: "Uzbekistan",
     countryCode: "uz",
-    continent: "asia"
+    continent: "asia",
   },
   {
     countryName: "Vietnam",
     countryCode: "vn",
-    continent: "asia"
+    continent: "asia",
   },
   {
     countryName: "Yemen",
     countryCode: "ye",
-    continent: "asia"
-  }
+    continent: "asia",
+  },
 ];
 
 let europeFlags: Flag[] = [
   {
     countryName: "Åland Islands",
     countryCode: "ax",
-    continent: "europe"
+    continent: "europe",
   },
   {
     countryName: "Albania",
     countryCode: "al",
-    continent: "europe"
+    continent: "europe",
   },
   {
     countryName: "Andorra",
     countryCode: "ad",
-    continent: "europe"
+    continent: "europe",
   },
   {
     countryName: "Austria",
     countryCode: "at",
-    continent: "europe"
+    continent: "europe",
   },
   {
     countryName: "Belarus",
     countryCode: "by",
-    continent: "europe"
+    continent: "europe",
   },
   {
     countryName: "Belgium",
     countryCode: "be",
-    continent: "europe"
+    continent: "europe",
   },
   {
     countryName: "Bosnia and Herzegovina",
     countryCode: "ba",
-    continent: "europe"
+    continent: "europe",
   },
   {
     countryName: "Bulgaria",
     countryCode: "bg",
-    continent: "europe"
+    continent: "europe",
   },
   {
     countryName: "Croatia",
     countryCode: "hr",
-    continent: "europe"
+    continent: "europe",
   },
   {
     countryName: "Cyprus",
     countryCode: "cy",
-    continent: "europe"
+    continent: "europe",
   },
   {
     countryName: "Czechia",
     countryCode: "cz",
-    continent: "europe"
+    continent: "europe",
   },
   {
     countryName: "Denmark",
     countryCode: "dk",
-    continent: "europe"
+    continent: "europe",
   },
   {
     countryName: "Estonia",
     countryCode: "ee",
-    continent: "europe"
+    continent: "europe",
   },
   {
     countryName: "Faroe Islands",
     countryCode: "fo",
-    continent: "europe"
+    continent: "europe",
   },
   {
     countryName: "Finland",
     countryCode: "fi",
-    continent: "europe"
+    continent: "europe",
   },
   {
     countryName: "France",
     countryCode: "fr",
-    continent: "europe"
+    continent: "europe",
   },
   {
     countryName: "Germany",
     countryCode: "de",
-    continent: "europe"
+    continent: "europe",
   },
   {
     countryName: "Gibraltar",
     countryCode: "gi",
-    continent: "europe"
+    continent: "europe",
   },
   {
     countryName: "Greece",
     countryCode: "gr",
-    continent: "europe"
+    continent: "europe",
   },
   {
     countryName: "Guernsey",
     countryCode: "gg",
-    continent: "europe"
+    continent: "europe",
   },
   {
     countryName: "Hungary",
     countryCode: "hu",
-    continent: "europe"
+    continent: "europe",
   },
   {
     countryName: "Iceland",
     countryCode: "is",
-    continent: "europe"
+    continent: "europe",
   },
   {
     countryName: "Ireland",
     countryCode: "ie",
-    continent: "europe"
+    continent: "europe",
   },
   {
     countryName: "Isle of Man",
     countryCode: "im",
-    continent: "europe"
+    continent: "europe",
   },
   {
     countryName: "Italy",
     countryCode: "it",
-    continent: "europe"
+    continent: "europe",
   },
   {
     countryName: "Jersey",
     countryCode: "je",
-    continent: "europe"
+    continent: "europe",
   },
   {
     countryName: "Kosovo",
     countryCode: "xk",
-    continent: "europe"
+    continent: "europe",
   },
   {
     countryName: "Latvia",
     countryCode: "lv",
-    continent: "europe"
+    continent: "europe",
   },
   {
     countryName: "Liechtenstein",
     countryCode: "li",
-    continent: "europe"
+    continent: "europe",
   },
   {
     countryName: "Lithuania",
     countryCode: "lt",
-    continent: "europe"
+    continent: "europe",
   },
   {
     countryName: "Luxembourg",
     countryCode: "lu",
-    continent: "europe"
+    continent: "europe",
   },
   {
     countryName: "Malta",
     countryCode: "mt",
-    continent: "europe"
+    continent: "europe",
   },
   {
     countryName: "Moldova",
     countryCode: "md",
-    continent: "europe"
+    continent: "europe",
   },
   {
     countryName: "Monaco",
     countryCode: "mc",
-    continent: "europe"
+    continent: "europe",
   },
   {
     countryName: "Montenegro",
     countryCode: "me",
-    continent: "europe"
+    continent: "europe",
   },
   {
     countryName: "Netherlands",
     countryCode: "nl",
-    continent: "europe"
+    continent: "europe",
   },
   {
     countryName: "North Macedonia",
     countryCode: "mk",
-    continent: "europe"
+    continent: "europe",
   },
   {
     countryName: "Norway",
     countryCode: "no",
-    continent: "europe"
+    continent: "europe",
   },
   {
     countryName: "Poland",
     countryCode: "pl",
-    continent: "europe"
+    continent: "europe",
   },
   {
     countryName: "Portugal",
     countryCode: "pt",
-    continent: "europe"
+    continent: "europe",
   },
   {
     countryName: "Romania",
     countryCode: "ro",
-    continent: "europe"
+    continent: "europe",
   },
   {
     countryName: "Russia",
     countryCode: "ru",
-    continent: "europe"
+    continent: "europe",
   },
   {
     countryName: "San Marino",
     countryCode: "sm",
-    continent: "europe"
+    continent: "europe",
   },
   {
     countryName: "Serbia",
     countryCode: "rs",
-    continent: "europe"
+    continent: "europe",
   },
   {
     countryName: "Slovakia",
     countryCode: "sk",
-    continent: "europe"
+    continent: "europe",
   },
   {
     countryName: "Slovenia",
     countryCode: "si",
-    continent: "europe"
+    continent: "europe",
   },
   {
     countryName: "Spain",
     countryCode: "es",
-    continent: "europe"
+    continent: "europe",
   },
   {
     countryName: "Svalbard and Jan Mayen",
     countryCode: "sj",
-    continent: "europe"
+    continent: "europe",
   },
   {
     countryName: "Sweden",
     countryCode: "se",
-    continent: "europe"
+    continent: "europe",
   },
   {
     countryName: "Switzerland",
     countryCode: "ch",
-    continent: "europe"
+    continent: "europe",
   },
   {
     countryName: "Turkey",
     countryCode: "tr",
-    continent: "europe"
+    continent: "europe",
   },
   {
     countryName: "Ukraine",
     countryCode: "ua",
-    continent: "europe"
+    continent: "europe",
   },
   {
     countryName: "United Kingdom",
     countryCode: "gb",
-    continent: "europe"
+    continent: "europe",
   },
   {
     countryName: "Vatican City",
     countryCode: "va",
-    continent: "europe"
-  }
+    continent: "europe",
+  },
 ];
 
 let northAmericaFlags: Flag[] = [
   {
     countryName: "Anguilla",
     countryCode: "ai",
-    continent: "north-america"
+    continent: "north-america",
   },
   {
     countryName: "Antigua and Barbuda",
     countryCode: "ag",
-    continent: "north-america"
+    continent: "north-america",
   },
   {
     countryName: "Aruba",
     countryCode: "aw",
-    continent: "north-america"
+    continent: "north-america",
   },
   {
     countryName: "Bahamas",
     countryCode: "bs",
-    continent: "north-america"
+    continent: "north-america",
   },
   {
     countryName: "Barbados",
     countryCode: "bb",
-    continent: "north-america"
+    continent: "north-america",
   },
   {
     countryName: "Belize",
     countryCode: "bz",
-    continent: "north-america"
+    continent: "north-america",
   },
   {
     countryName: "Bermuda",
     countryCode: "bm",
-    continent: "north-america"
+    continent: "north-america",
   },
   {
     countryName: "Canada",
     countryCode: "ca",
-    continent: "north-america"
+    continent: "north-america",
   },
   {
     countryName: "Caribbean Netherlands",
     countryCode: "bq",
-    continent: "north-america"
+    continent: "north-america",
   },
   {
     countryName: "Cayman Islands",
     countryCode: "ky",
-    continent: "north-america"
+    continent: "north-america",
   },
   {
     countryName: "Costa Rica",
     countryCode: "cr",
-    continent: "north-america"
+    continent: "north-america",
   },
   {
     countryName: "Cuba",
     countryCode: "cu",
-    continent: "north-america"
+    continent: "north-america",
   },
   {
     countryName: "Curaçao",
     countryCode: "cw",
-    continent: "north-america"
+    continent: "north-america",
   },
   {
     countryName: "Dominica",
     countryCode: "dm",
-    continent: "north-america"
+    continent: "north-america",
   },
   {
     countryName: "Dominican Republic",
     countryCode: "do",
-    continent: "north-america"
+    continent: "north-america",
   },
   {
     countryName: "El Salvador",
     countryCode: "sv",
-    continent: "north-america"
+    continent: "north-america",
   },
   {
     countryName: "Greenland",
     countryCode: "gl",
-    continent: "north-america"
+    continent: "north-america",
   },
   {
     countryName: "Grenada",
     countryCode: "gd",
-    continent: "north-america"
+    continent: "north-america",
   },
   {
     countryName: "Guadeloupe",
     countryCode: "gp",
-    continent: "north-america"
+    continent: "north-america",
   },
   {
     countryName: "Guatemala",
     countryCode: "gt",
-    continent: "north-america"
+    continent: "north-america",
   },
   {
     countryName: "Haiti",
     countryCode: "ht",
-    continent: "north-america"
+    continent: "north-america",
   },
   {
     countryName: "Honduras",
     countryCode: "hn",
-    continent: "north-america"
+    continent: "north-america",
   },
   {
     countryName: "Jamaica",
     countryCode: "jm",
-    continent: "north-america"
+    continent: "north-america",
   },
   {
     countryName: "Martinique",
     countryCode: "mq",
-    continent: "north-america"
+    continent: "north-america",
   },
   {
     countryName: "Mexico",
     countryCode: "mx",
-    continent: "north-america"
+    continent: "north-america",
   },
   {
     countryName: "Montserrat",
     countryCode: "ms",
-    continent: "north-america"
+    continent: "north-america",
   },
   {
     countryName: "Nicaragua",
     countryCode: "ni",
-    continent: "north-america"
+    continent: "north-america",
   },
   {
     countryName: "Panama",
     countryCode: "pa",
-    continent: "north-america"
+    continent: "north-america",
   },
   {
     countryName: "Puerto Rico",
     countryCode: "pr",
-    continent: "north-america"
+    continent: "north-america",
   },
   {
     countryName: "Saint Barthélemy",
     countryCode: "bl",
-    continent: "north-america"
+    continent: "north-america",
   },
   {
     countryName: "Saint Kitts and Nevis",
     countryCode: "kn",
-    continent: "north-america"
+    continent: "north-america",
   },
   {
     countryName: "Saint Lucia",
     countryCode: "lc",
-    continent: "north-america"
+    continent: "north-america",
   },
   {
     countryName: "Saint Martin",
     countryCode: "mf",
-    continent: "north-america"
+    continent: "north-america",
   },
   {
     countryName: "Saint Pierre and Miquelon",
     countryCode: "pm",
-    continent: "north-america"
+    continent: "north-america",
   },
   {
     countryName: "Saint Vincent and the Grenadines",
     countryCode: "vc",
-    continent: "north-america"
+    continent: "north-america",
   },
   {
     countryName: "Sint Maarten",
     countryCode: "sx",
-    continent: "north-america"
+    continent: "north-america",
   },
   {
     countryName: "Turks and Caicos Islands",
     countryCode: "tc",
-    continent: "north-america"
+    continent: "north-america",
   },
   {
     countryName: "United States",
     countryCode: "us",
-    continent: "north-america"
+    continent: "north-america",
   },
   {
     countryName: "United States Minor Outlying Islands",
     countryCode: "um",
-    continent: "north-america"
+    continent: "north-america",
   },
   {
     countryName: "British Virgin Islands",
     countryCode: "vg",
-    continent: "north-america"
+    continent: "north-america",
   },
   {
     countryName: "United States Virgin Islands",
     countryCode: "vi",
-    continent: "north-america"
-  }
+    continent: "north-america",
+  },
 ];
 
 let oceaniaFlags: Flag[] = [
   {
     countryName: "American Samoa",
     countryCode: "as",
-    continent: "oceania"
+    continent: "oceania",
   },
   {
     countryName: "Australia",
     countryCode: "au",
-    continent: "oceania"
+    continent: "oceania",
   },
   {
     countryName: "Christmas Island",
     countryCode: "cx",
-    continent: "oceania"
+    continent: "oceania",
   },
   {
     countryName: "Cocos Islands",
     countryCode: "cc",
-    continent: "oceania"
+    continent: "oceania",
   },
   {
     countryName: "Cook Islands",
     countryCode: "ck",
-    continent: "oceania"
+    continent: "oceania",
   },
   {
     countryName: "Fiji",
     countryCode: "fj",
-    continent: "oceania"
+    continent: "oceania",
   },
   {
     countryName: "French Polynesia",
     countryCode: "pf",
-    continent: "oceania"
+    continent: "oceania",
   },
   {
     countryName: "Guam",
     countryCode: "gu",
-    continent: "oceania"
+    continent: "oceania",
   },
   {
     countryName: "Indonesia",
     countryCode: "id",
-    continent: "oceania"
+    continent: "oceania",
   },
   {
     countryName: "Kiribati",
     countryCode: "ki",
-    continent: "oceania"
+    continent: "oceania",
   },
   {
     countryName: "Marshall Islands",
     countryCode: "mh",
-    continent: "oceania"
+    continent: "oceania",
   },
   {
     countryName: "Micronesia",
     countryCode: "fm",
-    continent: "oceania"
+    continent: "oceania",
   },
   {
     countryName: "Nauru",
     countryCode: "nr",
-    continent: "oceania"
+    continent: "oceania",
   },
   {
     countryName: "New Caledonia",
     countryCode: "nc",
-    continent: "oceania"
+    continent: "oceania",
   },
   {
     countryName: "New Zealand",
     countryCode: "nz",
-    continent: "oceania"
+    continent: "oceania",
   },
   {
     countryName: "Niue",
     countryCode: "nu",
-    continent: "oceania"
+    continent: "oceania",
   },
   {
     countryName: "Norfolk Island",
     countryCode: "nf",
-    continent: "oceania"
+    continent: "oceania",
   },
   {
     countryName: "Northern Mariana Islands",
     countryCode: "mp",
-    continent: "oceania"
+    continent: "oceania",
   },
   {
     countryName: "Palau",
     countryCode: "pw",
-    continent: "oceania"
+    continent: "oceania",
   },
   {
     countryName: "Papua New Guinea",
     countryCode: "pg",
-    continent: "oceania"
+    continent: "oceania",
   },
   {
     countryName: "Pitcairn Islands",
     countryCode: "pn",
-    continent: "oceania"
+    continent: "oceania",
   },
   {
     countryName: "Samoa",
     countryCode: "ws",
-    continent: "oceania"
+    continent: "oceania",
   },
   {
     countryName: "Solomon Islands",
     countryCode: "sb",
-    continent: "oceania"
+    continent: "oceania",
   },
   {
     countryName: "Tokelau",
     countryCode: "tk",
-    continent: "oceania"
+    continent: "oceania",
   },
   {
     countryName: "Tonga",
     countryCode: "to",
-    continent: "oceania"
+    continent: "oceania",
   },
   {
     countryName: "Tuvalu",
     countryCode: "tv",
-    continent: "oceania"
+    continent: "oceania",
   },
   {
     countryName: "Vanuatu",
     countryCode: "vu",
-    continent: "oceania"
+    continent: "oceania",
   },
   {
     countryName: "Wallis and Futuna",
     countryCode: "wf",
-    continent: "oceania"
-  }
+    continent: "oceania",
+  },
 ];
 
 let southAmericaFlags: Flag[] = [
   {
     countryName: "Argentina",
     countryCode: "ar",
-    continent: "south-america"
+    continent: "south-america",
   },
   {
     countryName: "Bolivia",
     countryCode: "bo",
-    continent: "south-america"
+    continent: "south-america",
   },
   {
     countryName: "Brazil",
     countryCode: "br",
-    continent: "south-america"
+    continent: "south-america",
   },
   {
     countryName: "Chile",
     countryCode: "cl",
-    continent: "south-america"
+    continent: "south-america",
   },
   {
     countryName: "Colombia",
     countryCode: "co",
-    continent: "south-america"
+    continent: "south-america",
   },
   {
     countryName: "Ecuador",
     countryCode: "ec",
-    continent: "south-america"
+    continent: "south-america",
   },
   {
     countryName: "Falkland Islands",
     countryCode: "fk",
-    continent: "south-america"
+    continent: "south-america",
   },
   {
     countryName: "French Guiana",
     countryCode: "gf",
-    continent: "south-america"
+    continent: "south-america",
   },
   {
     countryName: "Guyana",
     countryCode: "gy",
-    continent: "south-america"
+    continent: "south-america",
   },
   {
     countryName: "Paraguay",
     countryCode: "py",
-    continent: "south-america"
+    continent: "south-america",
   },
   {
     countryName: "Peru",
     countryCode: "pe",
-    continent: "south-america"
+    continent: "south-america",
   },
   {
     countryName: "Suriname",
     countryCode: "sr",
-    continent: "south-america"
+    continent: "south-america",
   },
   {
     countryName: "Trinidad and Tobago",
     countryCode: "tt",
-    continent: "south-america"
+    continent: "south-america",
   },
   {
     countryName: "Uruguay",
     countryCode: "uy",
-    continent: "south-america"
+    continent: "south-america",
   },
   {
     countryName: "Venezuela",
     countryCode: "ve",
-    continent: "south-america"
-  }
+    continent: "south-america",
+  },
 ];
 
 let allFlags = [
@@ -1326,5 +1326,5 @@ let allFlags = [
   europeFlags,
   oceaniaFlags,
   southAmericaFlags,
-  northAmericaFlags
+  northAmericaFlags,
 ].flat();

@@ -4,7 +4,7 @@ import {
   getFlagImgPath,
   Flag,
   Continent,
-  continentOptions
+  continentOptions,
 } from "./utils/flags";
 import { getPlayers } from "./utils/players";
 import { classNames } from "./utils/class-names";
@@ -32,7 +32,7 @@ export default function GuessTheFlag() {
             <div
               key={player.name}
               className={classNames("inline", "p-1", "m-1", "rounded", {
-                "game-board-player__active": index === currentPlayerIndex
+                "game-board-player__active": index === currentPlayerIndex,
               })}
             >
               <span className="mr-1">{player.name}</span>
@@ -51,7 +51,7 @@ export default function GuessTheFlag() {
         <h3>The results</h3>
         {state.playerResults
           .sort((pA, pB) => pA.score - pB.score)
-          .map(player => (
+          .map((player) => (
             <div>
               {player.name} - {player.score}
             </div>
@@ -69,10 +69,10 @@ export default function GuessTheFlag() {
         <h1 className="text-center text-3xl mt-3">Guess the Flag</h1>
         <h2 className="text-center mt-3">How many players?</h2>
         <div className="flex justify-center my-2">
-          {[2, 3, 4, 5].map(n => (
+          {[2, 3, 4, 5].map((n) => (
             <span
               className={classNames("m-1", {
-                "opacity-50": state.numberOfPlayers !== n
+                "opacity-50": state.numberOfPlayers !== n,
               })}
             >
               <UButton
@@ -87,11 +87,11 @@ export default function GuessTheFlag() {
         </div>
         <h2 className="text-center mt-3 mb-2">What continent?</h2>
         <div className="flex justify-center flex-wrap">
-          {continentOptions.map(continentOption => (
+          {continentOptions.map((continentOption) => (
             <span
               key={continentOption.label}
               className={classNames("m-1", {
-                "opacity-50": state.selectedContinent !== continentOption.value
+                "opacity-50": state.selectedContinent !== continentOption.value,
               })}
             >
               <UButton
@@ -207,7 +207,7 @@ interface Player {
 export const initialState: SetupState = {
   kind: "setup",
   selectedContinent: null,
-  numberOfPlayers: 2
+  numberOfPlayers: 2,
 };
 
 interface SetupState {
@@ -275,8 +275,8 @@ let updateSetup = (
   type: "UPDATE_SETUP",
   payload: {
     numberOfPlayers,
-    selectedContinent
-  }
+    selectedContinent,
+  },
 });
 
 let startGame = (
@@ -286,14 +286,14 @@ let startGame = (
   type: "START_GAME",
   payload: {
     numberOfPlayers,
-    selectedContinent
-  }
+    selectedContinent,
+  },
 });
 
 let revealAnswer = (): RevealAnswerAction => ({ type: "REVEAL_ANSWER" });
 
 let markAsCorrectAnswer = (): MarkAsCorrectAnswer => ({
-  type: "MARK_AS_CORRECT"
+  type: "MARK_AS_CORRECT",
 });
 
 let markAsWrongAnswer = (): MarkAsWrongAnswer => ({ type: "MARK_AS_WRONG" });
@@ -312,15 +312,13 @@ type Actions =
 export function reducer(state: State, action: Actions): State {
   switch (action.type) {
     case "UPDATE_SETUP":
-      let {
-        numberOfPlayers: numOfPlayers,
-        selectedContinent: selContinent
-      } = action.payload;
+      let { numberOfPlayers: numOfPlayers, selectedContinent: selContinent } =
+        action.payload;
 
       return {
         kind: "setup",
         numberOfPlayers: numOfPlayers,
-        selectedContinent: selContinent
+        selectedContinent: selContinent,
       };
 
     case "START_GAME":
@@ -331,7 +329,7 @@ export function reducer(state: State, action: Actions): State {
         kind: "question",
         players,
         answeredQuestions: 0,
-        remainingFlags: getFlags(selectedContinent)
+        remainingFlags: getFlags(selectedContinent),
       };
 
     case "REVEAL_ANSWER":
@@ -343,7 +341,7 @@ export function reducer(state: State, action: Actions): State {
         kind: "answer",
         players: state.players,
         answeredQuestions: state.answeredQuestions,
-        remainingFlags: state.remainingFlags
+        remainingFlags: state.remainingFlags,
       };
 
     case "MARK_AS_CORRECT":
@@ -358,7 +356,7 @@ export function reducer(state: State, action: Actions): State {
         // TODO they can have a same amount of points
         return {
           kind: "result",
-          playerResults: state.players
+          playerResults: state.players,
         };
       }
 
@@ -368,13 +366,13 @@ export function reducer(state: State, action: Actions): State {
           if (index === currentPlayerIndex) {
             return {
               ...player,
-              score: player.score + 1
+              score: player.score + 1,
             };
           }
           return player;
         }),
         answeredQuestions: state.answeredQuestions + 1,
-        remainingFlags
+        remainingFlags,
       };
 
     case "MARK_AS_WRONG":
@@ -388,7 +386,7 @@ export function reducer(state: State, action: Actions): State {
         // TODO they can have a same amount of points
         return {
           kind: "result",
-          playerResults: state.players
+          playerResults: state.players,
         };
       }
 
@@ -396,7 +394,7 @@ export function reducer(state: State, action: Actions): State {
         kind: "question",
         players: state.players,
         answeredQuestions: state.answeredQuestions + 1,
-        remainingFlags: remainingFlags2
+        remainingFlags: remainingFlags2,
       };
 
     case "GO_TO_SETUP":

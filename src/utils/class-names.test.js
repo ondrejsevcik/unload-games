@@ -10,7 +10,7 @@ test("it returns correct classes", () => {
   expect(
     classNames("css-class", {
       "not-included": false,
-      included: true
+      included: true,
     })
   ).toEqual("css-class included");
 });
