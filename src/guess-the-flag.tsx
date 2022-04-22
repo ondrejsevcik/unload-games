@@ -1,4 +1,4 @@
-import React, { useReducer } from "react";
+import React, { useState } from "react";
 import {
   getFlags,
   getFlagImgPath,
@@ -11,15 +11,162 @@ import { classNames } from "./utils/class-names";
 import { UButton } from "./components/u-button";
 import "./guess-the-flag.css";
 
+interface Player {
+  name: string;
+  score: number;
+}
+
 export default function GuessTheFlag() {
-  const [state, dispatch] = useReducer(reducer, initialState);
+  const [continent, setContinent] = useState<Continent>("europe");
+  const [numberOfPlayers, setNumberOfPlayers] = useState(2);
+  const [isGameInProgress, setIsGameInProgress] = useState(false);
+  const [results, setResults] = useState<Player[] | null>(null);
 
-  function GameBoardScreen(state: QuestionState | AnswerState) {
-    let currentPlayerIndex = state.answeredQuestions % state.players.length;
-    let totalFlags = state.answeredQuestions + state.remainingFlags.length;
-    let percentComplete = (100 / totalFlags) * state.answeredQuestions;
+  function updateSetup(numberOfPlayers, selectedContinent) {
+    setContinent(selectedContinent);
+    setNumberOfPlayers(numberOfPlayers);
+  }
 
-    return (
+  function startGame() {
+    setIsGameInProgress(true);
+  }
+
+  function startNewGame() {
+    setContinent("europe");
+    setNumberOfPlayers(2);
+    setResults(null);
+    setIsGameInProgress(false);
+  }
+
+  function showResults(results: Player[]) {
+    setResults(results);
+  }
+
+  return (
+    <div className="justify-center flex">
+      {!results && !isGameInProgress && (
+        <SetupView
+          numberOfPlayers={numberOfPlayers}
+          continent={continent}
+          onSetupUpdate={updateSetup}
+          onStartGame={startGame}
+        />
+      )}
+
+      {isGameInProgress && (
+        <GameBoard
+          continent={continent}
+          numberOfPlayers={numberOfPlayers}
+          onGameFinished={showResults}
+        />
+      )}
+
+      {results && <Results results={results} onStartNewGame={startNewGame} />}
+    </div>
+  );
+}
+
+function SetupView({ numberOfPlayers, continent, onSetupUpdate, onStartGame }) {
+  return (
+    <div className="max-w-sm">
+      <h1 className="text-center text-3xl mt-3">Guess the Flag</h1>
+      <h2 className="text-center mt-3">How many players?</h2>
+      <div className="flex justify-center my-2">
+        {[2, 3, 4, 5].map((n) => (
+          <span
+            key={n}
+            className={classNames("m-1", {
+              "opacity-50": numberOfPlayers !== n,
+            })}
+          >
+            <UButton
+              onClick={() => onSetupUpdate(n, continent)}
+              label={n.toString()}
+            />
+          </span>
+        ))}
+      </div>
+      <h2 className="text-center mt-3 mb-2">What continent?</h2>
+      <div className="flex justify-center flex-wrap">
+        {continentOptions.map((continentOption) => (
+          <span
+            key={continentOption.label}
+            className={classNames("m-1", {
+              "opacity-50": continent !== continentOption.value,
+            })}
+          >
+            <UButton
+              onClick={() =>
+                onSetupUpdate(numberOfPlayers, continentOption.value)
+              }
+              label={continentOption.label}
+            />
+          </span>
+        ))}
+      </div>
+      <div className="text-center mt-6">
+        <UButton onClick={() => onStartGame()} label="Start game" />
+      </div>
+    </div>
+  );
+}
+
+function GameBoard({
+  numberOfPlayers,
+  continent,
+  onGameFinished,
+}: {
+  numberOfPlayers: number;
+  continent: Continent;
+  onGameFinished: (results: Player[]) => void;
+}) {
+  const [answeredQuestions, setAnsweredQuestions] = useState(0);
+  const [players, setPlayers] = useState<Player[]>(getPlayers(numberOfPlayers));
+  const [isAnswerVisible, setIsAnswerVisible] = useState(false);
+  const [remainingFlags, setRemainingFlags] = useState<Flag[]>(
+    getFlags(continent)
+  );
+
+  console.assert(
+    numberOfPlayers > 0,
+    "numberOfPlayers has to be higher than zero"
+  );
+
+  let currentPlayer = players[answeredQuestions % numberOfPlayers];
+  let totalFlags = answeredQuestions + remainingFlags.length;
+  let percentComplete = (100 / totalFlags) * answeredQuestions;
+  let flag = remainingFlags[0];
+
+  const revealAnswer = () => setIsAnswerVisible(true);
+
+  const moveToNextQuestion = () => {
+    setIsAnswerVisible(false);
+    setRemainingFlags([...remainingFlags.slice(1)]);
+    setAnsweredQuestions(answeredQuestions + 1);
+
+    if (remainingFlags.length <= 1) {
+      // This was the last question
+      onGameFinished(players);
+    }
+  };
+
+  const markAsCorrectAnswer = () => {
+    setPlayers(
+      players.map((player) =>
+        player === currentPlayer
+          ? {
+              ...player,
+              score: player.score + 1,
+            }
+          : player
+      )
+    );
+
+    moveToNextQuestion();
+  };
+
+  return (
+    <div className="flex-grow">
       <div>
         <div className="progress-bar">
           <div
@@ -28,11 +175,11 @@ export default function GuessTheFlag() {
           />
         </div>
         <div className="flex justify-center">
-          {state.players.map((player, index) => (
+          {players.map((player) => (
             <div
               key={player.name}
               className={classNames("inline", "p-1", "m-1", "rounded", {
-                "game-board-player__active": index === currentPlayerIndex,
+                "game-board-player__active": player === currentPlayer,
               })}
             >
               <span className="mr-1">{player.name}</span>
@@ -41,366 +188,63 @@ export default function GuessTheFlag() {
           ))}
         </div>
       </div>
-    );
-  }
 
-  function ResultView(state: ResultState) {
-    return (
-      <div className="flex flex-col items-center">
-        <h1 className="text-center">It's over!!</h1>
-        <h3>The results</h3>
-        {state.playerResults
-          .sort((pA, pB) => pA.score - pB.score)
-          .map((player) => (
-            <div>
-              {player.name} - {player.score}
-            </div>
-          ))}
-        <button className="button" onClick={() => dispatch(goToSetup())}>
-          New game
-        </button>
-      </div>
-    );
-  }
+      <h1 className="text-center mt-3">Guess the flag</h1>
+      <img className="game-board-img" src={getFlagImgPath(flag)} alt="Flag" />
 
-  function SetupView(state: SetupState) {
-    return (
-      <div className="max-w-sm">
-        <h1 className="text-center text-3xl mt-3">Guess the Flag</h1>
-        <h2 className="text-center mt-3">How many players?</h2>
-        <div className="flex justify-center my-2">
-          {[2, 3, 4, 5].map((n) => (
-            <span
-              key={n}
-              className={classNames("m-1", {
-                "opacity-50": state.numberOfPlayers !== n,
-              })}
+      <div className="text-center">
+        <div className="text-2xl mt-2 mb-2">
+          {/* To prevent layout jumping, we keep this div around at all times */}
+          {isAnswerVisible ? flag.countryName : <span>&nbsp;</span>}
+        </div>
+
+        {isAnswerVisible ? (
+          <div>
+            <button
+              className="button mr-1"
+              onClick={() => markAsCorrectAnswer()}
             >
-              <UButton
-                onClick={() =>
-                  dispatch(updateSetup(n, state.selectedContinent))
-                }
-                label={n.toString()}
-              />
-            </span>
-          ))}
-        </div>
-        <h2 className="text-center mt-3 mb-2">What continent?</h2>
-        <div className="flex justify-center flex-wrap">
-          {continentOptions.map((continentOption) => (
-            <span
-              key={continentOption.label}
-              className={classNames("m-1", {
-                "opacity-50": state.selectedContinent !== continentOption.value,
-              })}
-            >
-              <UButton
-                onClick={() =>
-                  dispatch(
-                    updateSetup(state.numberOfPlayers, continentOption.value)
-                  )
-                }
-                label={continentOption.label}
-              />
-            </span>
-          ))}
-        </div>
-        <div className="text-center mt-6">
-          <UButton
-            onClick={() =>
-              dispatch(
-                startGame(state.numberOfPlayers, state.selectedContinent)
-              )
-            }
-            label="Start game"
-          />
-        </div>
-      </div>
-    );
-  }
-
-  function QuestionView(state: QuestionState) {
-    // TODO this might throw
-    let flag = state.remainingFlags[0];
-
-    return (
-      <div className="flex-grow">
-        {GameBoardScreen(state)}
-        <h1 className="text-center mt-3">Guess the flag</h1>
-        <img className="game-board-img" src={getFlagImgPath(flag)} alt="Flag" />
-        <div className="text-center text-2xl mt-2 mb-2 invisible">
-          {flag.countryName}
-        </div>
-        <div className="text-center">
-          <button className="button" onClick={() => dispatch(revealAnswer())}>
+              <span role="img" aria-label="Correct">
+                👍
+              </span>
+            </button>
+            <button className="button" onClick={() => moveToNextQuestion()}>
+              <span role="img" aria-label="Wrong">
+                👎
+              </span>
+            </button>
+          </div>
+        ) : (
+          <button className="button" onClick={() => revealAnswer()}>
             Show me
           </button>
-        </div>
+        )}
       </div>
-    );
-  }
-
-  function AnswerView(state: AnswerState) {
-    // TODO this might throw;
-    let flag = state.remainingFlags[0];
-
-    return (
-      <div className="flex-grow">
-        {GameBoardScreen(state)}
-        <h1 className="text-center mt-3">Guess the flag</h1>
-        <img className="game-board-img" src={getFlagImgPath(flag)} alt="Flag" />
-        <div className="text-center text-2xl mt-2 mb-2">{flag.countryName}</div>
-        <div className="text-center">
-          <button
-            className="button mr-1"
-            onClick={() => dispatch(markAsCorrectAnswer())}
-          >
-            <span role="img" aria-label="Correct">
-              👍
-            </span>
-          </button>
-          <button
-            className="button"
-            onClick={() => dispatch(markAsWrongAnswer())}
-          >
-            <span role="img" aria-label="Wrong">
-              👎
-            </span>
-          </button>
-        </div>
-      </div>
-    );
-  }
-
-  let view: JSX.Element = <div />;
-  switch (state.kind) {
-    case "setup":
-      view = SetupView(state);
-      break;
-    case "question":
-      view = QuestionView(state);
-      break;
-    case "answer":
-      view = AnswerView(state);
-      break;
-    case "result":
-      view = ResultView(state);
-      break;
-    default:
-      assertNever(state);
-      break;
-  }
-
-  return <div className="justify-center flex">{view}</div>;
+    </div>
+  );
 }
 
-function assertNever(x: never): never {
-  throw new Error("Unexpected object: " + x);
-}
-
-interface Player {
-  name: string;
-  score: number;
-}
-
-// States
-export const initialState: SetupState = {
-  kind: "setup",
-  selectedContinent: null,
-  numberOfPlayers: 2,
-};
-
-interface SetupState {
-  kind: "setup";
-  selectedContinent: Continent | null;
-  numberOfPlayers: number;
-}
-
-interface QuestionState {
-  kind: "question";
-  players: Player[];
-  answeredQuestions: number;
-  remainingFlags: Flag[];
-}
-
-interface AnswerState {
-  kind: "answer";
-  players: Player[];
-  answeredQuestions: number;
-  remainingFlags: Flag[];
-}
-
-interface ResultState {
-  kind: "result";
-  playerResults: Player[];
-}
-
-type State = SetupState | QuestionState | AnswerState | ResultState;
-
-// Actions
-interface RevealAnswerAction {
-  type: "REVEAL_ANSWER";
-}
-interface UpdateSetupAction {
-  type: "UPDATE_SETUP";
-  payload: {
-    numberOfPlayers: number;
-    selectedContinent: Continent | null;
-  };
-}
-interface StartGameAction {
-  type: "START_GAME";
-  payload: {
-    numberOfPlayers: number;
-    selectedContinent: Continent | null;
-  };
-}
-interface RevealAnswerAction {
-  type: "REVEAL_ANSWER";
-}
-interface MarkAsCorrectAnswer {
-  type: "MARK_AS_CORRECT";
-}
-interface MarkAsWrongAnswer {
-  type: "MARK_AS_WRONG";
-}
-interface GoToSetupAction {
-  type: "GO_TO_SETUP";
-}
-
-let updateSetup = (
-  numberOfPlayers: number,
-  selectedContinent: Continent | null
-): UpdateSetupAction => ({
-  type: "UPDATE_SETUP",
-  payload: {
-    numberOfPlayers,
-    selectedContinent,
-  },
-});
-
-let startGame = (
-  numberOfPlayers: number,
-  selectedContinent: Continent | null
-): StartGameAction => ({
-  type: "START_GAME",
-  payload: {
-    numberOfPlayers,
-    selectedContinent,
-  },
-});
-
-let revealAnswer = (): RevealAnswerAction => ({ type: "REVEAL_ANSWER" });
-
-let markAsCorrectAnswer = (): MarkAsCorrectAnswer => ({
-  type: "MARK_AS_CORRECT",
-});
-
-let markAsWrongAnswer = (): MarkAsWrongAnswer => ({ type: "MARK_AS_WRONG" });
-
-let goToSetup = (): GoToSetupAction => ({ type: "GO_TO_SETUP" });
-
-type Actions =
-  | UpdateSetupAction
-  | StartGameAction
-  | RevealAnswerAction
-  | MarkAsCorrectAnswer
-  | MarkAsWrongAnswer
-  | GoToSetupAction;
-
-// Reducer
-export function reducer(state: State, action: Actions): State {
-  switch (action.type) {
-    case "UPDATE_SETUP":
-      let { numberOfPlayers: numOfPlayers, selectedContinent: selContinent } =
-        action.payload;
-
-      return {
-        kind: "setup",
-        numberOfPlayers: numOfPlayers,
-        selectedContinent: selContinent,
-      };
-
-    case "START_GAME":
-      let { numberOfPlayers, selectedContinent } = action.payload;
-      let players = getPlayers(numberOfPlayers);
-
-      return {
-        kind: "question",
-        players,
-        answeredQuestions: 0,
-        remainingFlags: getFlags(selectedContinent),
-      };
-
-    case "REVEAL_ANSWER":
-      if (state.kind !== "question") {
-        return state;
-      }
-
-      return {
-        kind: "answer",
-        players: state.players,
-        answeredQuestions: state.answeredQuestions,
-        remainingFlags: state.remainingFlags,
-      };
-
-    case "MARK_AS_CORRECT":
-      if (state.kind !== "answer") {
-        return state;
-      }
-
-      let currentPlayerIndex = state.answeredQuestions % state.players.length;
-      let remainingFlags = [...state.remainingFlags.slice(1)];
-
-      if (remainingFlags.length === 0) {
-        // TODO they can have a same amount of points
-        return {
-          kind: "result",
-          playerResults: state.players,
-        };
-      }
-
-      return {
-        kind: "question",
-        players: state.players.map((player, index) => {
-          if (index === currentPlayerIndex) {
-            return {
-              ...player,
-              score: player.score + 1,
-            };
-          }
-          return player;
-        }),
-        answeredQuestions: state.answeredQuestions + 1,
-        remainingFlags,
-      };
-
-    case "MARK_AS_WRONG":
-      if (state.kind !== "answer") {
-        return state;
-      }
-
-      let remainingFlags2 = [...state.remainingFlags.slice(1)];
-
-      if (remainingFlags2.length === 0) {
-        // TODO they can have a same amount of points
-        return {
-          kind: "result",
-          playerResults: state.players,
-        };
-      }
-
-      return {
-        kind: "question",
-        players: state.players,
-        answeredQuestions: state.answeredQuestions + 1,
-        remainingFlags: remainingFlags2,
-      };
-
-    case "GO_TO_SETUP":
-      return initialState;
-
-    default:
-      assertNever(action);
-  }
+function Results({
+  results,
+  onStartNewGame,
+}: {
+  results: Player[];
+  onStartNewGame: () => void;
+}) {
+  return (
+    <div className="flex flex-col items-center">
+      <h1 className="text-center">It's over!!</h1>
+      <h3>The results</h3>
+      {results
+        .sort((pA, pB) => pA.score - pB.score)
+        .map((player) => (
+          <div>
+            {player.name} - {player.score}
+          </div>
+        ))}
+      <button className="button" onClick={onStartNewGame}>
+        New game
+      </button>
+    </div>
+  );
 }
