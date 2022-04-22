@@ -1,22 +1,13 @@
 {
   "files": {
-    "main.css": "/unload-games/static/css/main.91a1163a.chunk.css",
-    "main.js": "/unload-games/static/js/main.30ddf8f5.chunk.js",
-    "main.js.map": "/unload-games/static/js/main.30ddf8f5.chunk.js.map",
-    "runtime-main.js": "/unload-games/static/js/runtime-main.a10a1f42.js",
-    "runtime-main.js.map": "/unload-games/static/js/runtime-main.a10a1f42.js.map",
-    "static/js/2.1314ce15.chunk.js": "/unload-games/static/js/2.1314ce15.chunk.js",
-    "static/js/2.1314ce15.chunk.js.map": "/unload-games/static/js/2.1314ce15.chunk.js.map",
+    "main.css": "/unload-games/static/css/main.b615d0f3.css",
+    "main.js": "/unload-games/static/js/main.74c21bb0.js",
     "index.html": "/unload-games/index.html",
-    "precache-manifest.979c77c78f334c439ef76bf50b4ff258.js": "/unload-games/precache-manifest.979c77c78f334c439ef76bf50b4ff258.js",
-    "service-worker.js": "/unload-games/service-worker.js",
-    "static/css/main.91a1163a.chunk.css.map": "/unload-games/static/css/main.91a1163a.chunk.css.map",
-    "static/js/2.1314ce15.chunk.js.LICENSE.txt": "/unload-games/static/js/2.1314ce15.chunk.js.LICENSE.txt"
+    "main.b615d0f3.css.map": "/unload-games/static/css/main.b615d0f3.css.map",
+    "main.74c21bb0.js.map": "/unload-games/static/js/main.74c21bb0.js.map"
   },
   "entrypoints": [
-    "static/js/runtime-main.a10a1f42.js",
-    "static/js/2.1314ce15.chunk.js",
-    "static/css/main.91a1163a.chunk.css",
-    "static/js/main.30ddf8f5.chunk.js"
+    "static/css/main.b615d0f3.css",
+    "static/js/main.74c21bb0.js"
   ]
 }
