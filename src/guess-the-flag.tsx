@@ -182,8 +182,9 @@ function GameBoard({
                 "game-board-player__active": player === currentPlayer,
               })}
             >
-              <span className="mr-1">{player.name}</span>
-              <span>{player.score}</span>
+              <span>
+                {player.name} {player.score}
+              </span>
             </div>
           ))}
         </div>
