@@ -239,7 +239,7 @@ function Results({
       {results
         .sort((pA, pB) => pA.score - pB.score)
         .map((player) => (
-          <div>
+          <div key={player.name}>
             {player.name} - {player.score}
           </div>
         ))}
