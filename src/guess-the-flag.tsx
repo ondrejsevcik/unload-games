@@ -137,6 +137,10 @@ function GameBoard({
   let percentComplete = (100 / totalFlags) * answeredQuestions;
   let flag = remainingFlags[0];
 
+  if (!flag) {
+    return null;
+  }
+
   const revealAnswer = () => setIsAnswerVisible(true);
 
   const moveToNextQuestion = () => {
