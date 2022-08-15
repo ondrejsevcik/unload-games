@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/unload-games/static/css/main.b615d0f3.css",
-    "main.js": "/unload-games/static/js/main.c4c83e2c.js",
+    "main.js": "/unload-games/static/js/main.3944f267.js",
     "index.html": "/unload-games/index.html",
     "main.b615d0f3.css.map": "/unload-games/static/css/main.b615d0f3.css.map",
-    "main.c4c83e2c.js.map": "/unload-games/static/js/main.c4c83e2c.js.map"
+    "main.3944f267.js.map": "/unload-games/static/js/main.3944f267.js.map"
   },
   "entrypoints": [
     "static/css/main.b615d0f3.css",
-    "static/js/main.c4c83e2c.js"
+    "static/js/main.3944f267.js"
   ]
 }
