@@ -33,3 +33,16 @@ test("it should be possible to answer incorrectly", () => {
   expect(screen.getByText("Joey 0")).toBeInTheDocument();
   expect(screen.getByText("Phoebe 0")).toBeInTheDocument();
 });
+
+test("it should show the same flag when 'show me' is pressed", () => {
+  render(<GuessTheFlag />);
+  fireEvent.click(screen.getByText("Start game"));
+
+  let beforeClickSrc = screen.getByAltText("Flag").getAttribute("src");
+
+  fireEvent.click(screen.getByText("Show me"));
+
+  let afterClickSrc = screen.getByAltText("Flag").getAttribute("src");
+
+  expect(beforeClickSrc).toEqual(afterClickSrc);
+});

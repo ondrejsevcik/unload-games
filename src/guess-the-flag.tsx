@@ -123,7 +123,7 @@ function GameBoard({
   const [answeredQuestions, setAnsweredQuestions] = useState(0);
   const [players, setPlayers] = useState<Player[]>(getPlayers(numberOfPlayers));
   const [isAnswerVisible, setIsAnswerVisible] = useState(false);
-  const [remainingFlags, setRemainingFlags] = useState<Flag[]>(
+  const [remainingFlags, setRemainingFlags] = useState<Flag[]>(() =>
     getFlags(continent)
   );
 
